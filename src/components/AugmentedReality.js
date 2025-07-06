@@ -4,7 +4,7 @@ import './AugmentedReality.css';
 const AugmentedReality = () => {
   const [selectedComponent, setSelectedComponent] = useState(0);
   const [isARActive, setIsARActive] = useState(false);
-  const [cameraPermission, setCameraPermission] = useState(false);
+  // const [cameraPermission, setCameraPermission] = useState(false);
   const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 });
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
@@ -88,6 +88,7 @@ const AugmentedReality = () => {
     }
   ];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isARActive) {
       animate3DModel();
@@ -149,7 +150,7 @@ const AugmentedReality = () => {
   const requestCameraPermission = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      setCameraPermission(true);
+      // setCameraPermission(true);
       setIsARActive(true);
       stream.getTracks().forEach(track => track.stop());
     } catch (error) {

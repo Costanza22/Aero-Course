@@ -14,6 +14,7 @@ const AnalyticsDashboard = ({ user }) => {
     certificates: 0
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadAnalyticsData();
   }, [selectedPeriod]);
@@ -123,7 +124,7 @@ const AnalyticsDashboard = ({ user }) => {
     if (studyLog.length === 0) return 0;
     
     let streak = 0;
-    const today = new Date().toDateString();
+    // const today = new Date().toDateString();
     const sortedLog = studyLog.sort((a, b) => new Date(b.date) - new Date(a.date));
     
     for (let i = 0; i < sortedLog.length; i++) {
