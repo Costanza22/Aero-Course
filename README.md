@@ -171,15 +171,6 @@ O dashboard inclui:
 - **Relatórios de Performance**: Análise de resultados
 - **Gráficos Interativos**: Visualizações dinâmicas
 
-## 🔧 Configuração Avançada
-
-### Variáveis de Ambiente
-```env
-REACT_APP_API_URL=sua-api-url
-REACT_APP_YOUTUBE_API_KEY=sua-chave-youtube
-REACT_APP_NOTIFICATION_KEY=sua-chave-notificacao
-```
-
 ### Personalização
 - **Temas**: Modifique as cores no arquivo CSS
 - **Conteúdo**: Adicione novos cursos e lições
@@ -197,12 +188,6 @@ REACT_APP_NOTIFICATION_KEY=sua-chave-notificacao
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 📞 Suporte
-
-- **Email**: suporte@aerocourse.com
-- **Documentação**: [docs.aerocourse.com](https://docs.aerocourse.com)
-- **Issues**: [GitHub Issues](https://github.com/seu-usuario/aerocourse/issues)
 
 ## 🎯 Roadmap
 
