@@ -4,7 +4,6 @@ import './AugmentedReality.css';
 const AugmentedReality = () => {
   const [selectedComponent, setSelectedComponent] = useState(0);
   const [isARActive, setIsARActive] = useState(false);
-  // const [cameraPermission, setCameraPermission] = useState(false);
   const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 });
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
@@ -88,7 +87,6 @@ const AugmentedReality = () => {
     }
   ];
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isARActive) {
       animate3DModel();
@@ -127,30 +125,44 @@ const AugmentedReality = () => {
   const draw3DComponent = (ctx, centerX, centerY) => {
     const component = components[selectedComponent];
     
-    // Desenhar base do componente
+    // Aplicar transformações de rotação
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.rotate((rotation.x + rotation.y) * Math.PI / 180);
+    
+    // Desenhar base do componente com efeito 3D
+    const depth = Math.sin(rotation.z * Math.PI / 180) * 20;
+    
+    // Sombra/backface
+    ctx.fillStyle = '#1a3a6b';
+    ctx.fillRect(-100 + depth, -50 + depth, 200, 100);
+    
+    // Base do componente
     ctx.fillStyle = '#2a5298';
-    ctx.fillRect(centerX - 100, centerY - 50, 200, 100);
+    ctx.fillRect(-100, -50, 200, 100);
     
     // Desenhar detalhes
     ctx.fillStyle = '#ffd700';
-    ctx.fillRect(centerX - 80, centerY - 30, 160, 60);
+    ctx.fillRect(-80, -30, 160, 60);
     
     // Adicionar texto
     ctx.fillStyle = '#fff';
     ctx.font = '16px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText(component.name, centerX, centerY + 10);
+    ctx.fillText(component.name, 0, 10);
     
     // Adicionar efeitos 3D
     ctx.strokeStyle = '#1a3a6b';
     ctx.lineWidth = 2;
-    ctx.strokeRect(centerX - 100, centerY - 50, 200, 100);
+    ctx.strokeRect(-100, -50, 200, 100);
+    
+    // Restaurar contexto
+    ctx.restore();
   };
 
   const requestCameraPermission = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      // setCameraPermission(true);
       setIsARActive(true);
       stream.getTracks().forEach(track => track.stop());
     } catch (error) {
@@ -212,6 +224,11 @@ const AugmentedReality = () => {
 
             {isARActive && (
               <div className="ar-controls">
+                <div className="rotation-display">
+                  <span>X: {Math.round(rotation.x)}°</span>
+                  <span>Y: {Math.round(rotation.y)}°</span>
+                  <span>Z: {Math.round(rotation.z)}°</span>
+                </div>
                 <div className="control-group">
                   <button onClick={() => rotateComponent('x', 1)}>↻ X+</button>
                   <button onClick={() => rotateComponent('x', -1)}>↺ X-</button>

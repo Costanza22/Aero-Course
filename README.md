@@ -1,183 +1,212 @@
-# 🛩️ AeroCourse - Plataforma Educacional de Aeronáutica
+# 🛩️ AeroCourse - Plataforma de Ensino de Aeronáutica
 
-Uma plataforma educacional moderna e interativa para o ensino de aeronáutica, desenvolvida em React com recursos avançados de realidade virtual, simulação de voo e conteúdo interativo.
+Uma plataforma educacional interativa e moderna para o ensino de aeronáutica, desenvolvida em React com recursos avançados de simulação, realidade aumentada e aprendizado interativo.
 
-## ✨ Características Principais
+## 📋 Índice
 
-### 🎓 Sistema Educacional
-- **Módulos de Curso**: Conteúdo estruturado por lições e módulos
-- **Sistema de Quiz**: Avaliações interativas por lição
-- **Progresso do Aluno**: Rastreamento detalhado do progresso
-- **Sistema de Notas**: Avaliação automática e manual
-- **Certificados PDF**: Geração automática de certificados
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Instalação](#instalação)
+- [Como Usar](#como-usar)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Componentes Principais](#componentes-principais)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
-### 🎮 Simulador de Voo
-- **Controles Realistas**: Joystick, pedais e instrumentos
-- **Instrumentos de Voo**: PFD, ND, EICAS e mais
-- **Física de Voo**: Simulação realista de aerodinâmica
-- **Múltiplas Aeronaves**: Diferentes tipos de aeronaves disponíveis
+## 🎯 Sobre o Projeto
 
-### 🎥 Conteúdo Interativo
-- **Tours Virtuais 360°**: Vídeos imersivos do YouTube
-- **Componentes AR 3D**: Modelos 3D interativos
-- **Podcasts Aeronáuticos**: Conteúdo em áudio
-- **Infográficos Interativos**: Visualizações dinâmicas
+O AeroCourse é uma plataforma educacional completa que oferece uma experiência de aprendizado imersiva para estudantes de aeronáutica. Combinando teoria, simulação prática e recursos interativos, a plataforma proporciona uma jornada educacional única no campo da aviação.
 
-### 📱 Interface Moderna
-- **Design Responsivo**: Compatível com desktop e mobile
-- **Modo Escuro/Claro**: Tema personalizável
-- **Notificações Push**: Alertas em tempo real
-- **Dashboard Analytics**: Métricas detalhadas de uso
+### 🎓 Objetivos Educacionais
 
-### 🛠️ Recursos Técnicos
-- **Chat em Tempo Real**: Comunicação entre usuários
-- **Centro de Downloads**: Biblioteca de recursos
-- **Biblioteca de Conteúdo**: Casos de estudo e notícias
-- **Sistema de Usuários**: Login e perfis personalizados
+- **Teoria Fundamental**: Conceitos básicos de aeronáutica e engenharia aeronáutica
+- **Aprendizado Prático**: Simuladores de voo e exercícios interativos
+- **Visualização 3D**: Componentes de aeronaves em realidade aumentada
+- **Avaliação Contínua**: Sistema de notas e certificação
+- **Comunidade**: Fórum de discussão e chat em tempo real
+
+## ✨ Funcionalidades
+
+### 🏠 **Página Inicial**
+- Interface moderna e responsiva
+- Navegação intuitiva
+- Sistema de temas (claro/escuro)
+
+### 📚 **Conteúdo do Curso**
+- Módulos estruturados de aprendizado
+- Conteúdo interativo e multimídia
+- Biblioteca de recursos educacionais
+- Sistema de progresso personalizado
+
+### 🥽 **Realidade Aumentada**
+- Visualização 3D de componentes aeronáuticos
+- Controles de rotação interativos
+- Especificações técnicas detalhadas
+- Compatibilidade com dispositivos móveis
+
+### 🎮 **Simuladores**
+- Simulador de voo interativo
+- Exercícios práticos
+- Cenários de treinamento realistas
+- Feedback em tempo real
+
+### 💬 **Comunicação**
+- Fórum de discussão
+- Chat em tempo real
+- Sistema de notificações
+- Suporte ao usuário
+
+### 📊 **Avaliação e Progresso**
+- Sistema de notas
+- Dashboard analítico
+- Certificados de conclusão
+- Relatórios de progresso
+
+### 📁 **Recursos Adicionais**
+- Centro de downloads
+- Biblioteca de conteúdo
+- Sistema de temas personalizável
+- Notificações inteligentes
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Frontend**: React 19.1.0
+- **Estilização**: CSS3 com temas personalizados
+- **Interatividade**: JavaScript ES6+
+- **Armazenamento**: LocalStorage
+- **Testes**: Jest e React Testing Library
+- **Build**: Create React App
 
 ## 🚀 Instalação
 
 ### Pré-requisitos
-- Node.js (versão 16 ou superior)
+
+- Node.js (versão 14 ou superior)
 - npm ou yarn
 
-### Passos de Instalação
+### Passos para Instalação
 
 1. **Clone o repositório**
-```bash
-git clone https://github.com/seu-usuario/aerocourse.git
-cd aerocourse
-```
+   ```bash
+   git clone https://github.com/seu-usuario/aerocourse.git
+   cd aerocourse
+   ```
 
 2. **Instale as dependências**
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-3. **Configure as variáveis de ambiente**
-```bash
-cp .env.example .env
-```
-Edite o arquivo `.env` com suas configurações.
+3. **Execute o projeto**
+   ```bash
+   npm start
+   ```
 
-4. **Inicie o servidor de desenvolvimento**
-```bash
-npm start
-```
+4. **Acesse a aplicação**
+   Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-5. **Acesse a aplicação**
-Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
+## 📖 Como Usar
+
+### 🆕 Primeiro Acesso
+1. Acesse a plataforma
+2. Faça login com suas credenciais
+3. Explore a página inicial
+4. Comece pelo primeiro módulo
+
+### 📚 Navegando pelo Curso
+1. **Módulos**: Acesse a seção de módulos
+2. **Progresso**: Acompanhe seu avanço no dashboard
+3. **Exercícios**: Complete os exercícios interativos
+4. **Simuladores**: Pratique com os simuladores disponíveis
+
+### 🥽 Usando a Realidade Aumentada
+1. Acesse a seção de RA
+2. Selecione um componente aeronáutico
+3. Ative a visualização 3D
+4. Use os controles para rotacionar e examinar
+
+### 💬 Participando da Comunidade
+1. Acesse o fórum para discussões
+2. Use o chat para dúvidas rápidas
+3. Compartilhe experiências e conhecimentos
 
 ## 📁 Estrutura do Projeto
 
 ```
 aerocourse/
-├── public/
-│   ├── index.html
-│   └── assets/
+├── public/                 # Arquivos públicos
 ├── src/
-│   ├── components/
-│   │   ├── Header.js
-│   │   ├── Footer.js
-│   │   ├── CourseModule.js
-│   │   ├── Quiz.js
+│   ├── components/         # Componentes React
+│   │   ├── About.js        # Página sobre
+│   │   ├── AnalyticsDashboard.js
+│   │   ├── AugmentedReality.js
+│   │   ├── CertificateGenerator.js
+│   │   ├── Chat.js
+│   │   ├── ContentLibrary.js
+│   │   ├── CourseContent.js
+│   │   ├── DownloadCenter.js
 │   │   ├── FlightSimulator.js
-│   │   ├── VirtualTour.js
+│   │   ├── Footer.js
+│   │   ├── Forum.js
+│   │   ├── GradeSystem.js
+│   │   ├── Header.js
+│   │   ├── Hero.js
 │   │   ├── InteractiveContent.js
-│   │   ├── Analytics.js
-│   │   └── ...
-│   ├── pages/
-│   │   ├── Home.js
-│   │   ├── Courses.js
-│   │   ├── Simulator.js
-│   │   └── ...
-│   ├── styles/
-│   │   ├── components/
-│   │   └── global.css
-│   ├── utils/
-│   │   ├── auth.js
-│   │   ├── api.js
-│   │   └── helpers.js
-│   └── App.js
+│   │   ├── InteractiveExercises.js
+│   │   ├── Library.js
+│   │   ├── Login.js
+│   │   ├── ModuleList.js
+│   │   ├── ModulePage.js
+│   │   ├── NotificationSystem.js
+│   │   ├── Simulators.js
+│   │   ├── ThemeToggle.js
+│   │   └── VirtualTour.js
+│   ├── styles/             # Estilos CSS
+│   │   └── dark-theme.css
+│   ├── assets/             # Recursos estáticos
+│   ├── App.js              # Componente principal
+│   ├── App.css
+│   └── index.js
 ├── package.json
 └── README.md
 ```
 
-## 🎯 Como Usar
+## 🧩 Componentes Principais
 
-### Para Estudantes
-1. **Cadastre-se** ou faça login na plataforma
-2. **Navegue pelos cursos** disponíveis
-3. **Assista às lições** e complete os quizzes
-4. **Use o simulador** para praticar
-5. **Explore o conteúdo interativo** (tours 360°, AR, podcasts)
-6. **Acompanhe seu progresso** no dashboard
+### 🥽 **AugmentedReality.js**
+- Visualização 3D de componentes aeronáuticos
+- Controles de rotação interativos
+- Especificações técnicas detalhadas
+- Simulação de realidade aumentada
 
-### Para Instrutores
-1. **Acesse o painel administrativo**
-2. **Crie e edite cursos** e lições
-3. **Configure quizzes** e avaliações
-4. **Monitore o progresso** dos alunos
-5. **Gere relatórios** e certificados
+### 🎮 **FlightSimulator.js**
+- Simulador de voo interativo
+- Controles de aeronave
+- Cenários de treinamento
+- Feedback em tempo real
 
-## 🎮 Simulador de Voo
+### 📚 **CourseContent.js**
+- Estrutura de módulos educacionais
+- Navegação entre conteúdos
+- Sistema de progresso
+- Interface responsiva
 
-O simulador inclui:
-- **Controles de Voo**: Joystick, pedais, manete de potência
-- **Instrumentos Primários**: Altímetro, velocímetro, horizonte artificial
-- **Instrumentos de Navegação**: GPS, VOR, ADF
-- **Sistemas de Emergência**: Alertas e procedimentos
+### 💬 **Chat.js**
+- Chat em tempo real
+- Interface de usuário
+- Histórico de mensagens
+- Notificações
 
-### Controles
-- **Mouse**: Controle do joystick
-- **Teclado**: Controles de potência e flaps
-- **Touch**: Compatível com dispositivos móveis
-
-## 🎥 Tours Virtuais 360°
-
-Explore locais aeronáuticos em realidade virtual:
-- **Cockpit Boeing 737**: Instrumentos e controles
-- **Hangar de Manutenção**: Processos de manutenção
-- **Torre de Controle**: Operações ATC
-- **Sala de Simulação**: Treinamento de pilotos
-
-### Recursos
-- **Hotspots Interativos**: Clique para informações detalhadas
-- **Navegação Intuitiva**: Controles touch-friendly
-- **Compatibilidade Mobile**: Otimizado para smartphones
-
-## 📱 Compatibilidade Mobile
-
-A plataforma é totalmente responsiva e inclui:
-- **Interface Adaptada**: Elementos redimensionados para touch
-- **Controles Touch**: Gestos e toques otimizados
-- **Carregamento Otimizado**: Performance melhorada em dispositivos móveis
-- **Modo Paisagem**: Suporte para orientação horizontal
-
-## 🛠️ Tecnologias Utilizadas
-
-- **Frontend**: React.js, CSS3, JavaScript ES6+
-- **Estilização**: CSS Grid, Flexbox, Media Queries
-- **Interatividade**: Event Listeners, Touch Events
-- **Vídeos**: YouTube API, iframe embedding
-- **PDF**: jsPDF para geração de certificados
-- **Notificações**: Web Notifications API
-
-## 📊 Recursos de Analytics
-
-O dashboard inclui:
-- **Progresso Individual**: Métricas por aluno
-- **Estatísticas Gerais**: Uso da plataforma
-- **Relatórios de Performance**: Análise de resultados
-- **Gráficos Interativos**: Visualizações dinâmicas
-
-### Personalização
-- **Temas**: Modifique as cores no arquivo CSS
-- **Conteúdo**: Adicione novos cursos e lições
-- **Vídeos**: Substitua os IDs do YouTube
-- **Simulador**: Configure novas aeronaves
+### 📊 **AnalyticsDashboard.js**
+- Dashboard analítico
+- Métricas de progresso
+- Gráficos interativos
+- Relatórios personalizados
 
 ## 🤝 Contribuição
+
+Contribuições são bem-vindas! Para contribuir:
 
 1. Faça um fork do projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
@@ -185,28 +214,35 @@ O dashboard inclui:
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-## 📝 Licença
+### 📝 Diretrizes de Contribuição
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+- Mantenha o código limpo e bem documentado
+- Siga os padrões de nomenclatura existentes
+- Teste suas mudanças antes de submeter
+- Adicione comentários explicativos quando necessário
 
-## 🎯 Roadmap
+## 📄 Licença
 
-### Próximas Funcionalidades
-- [ ] Integração com VR headsets
-- [ ] Multiplayer no simulador
-- [ ] IA para avaliação automática
-- [ ] App mobile nativo
-- [ ] Integração com sistemas de aviação real
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-### Melhorias Planejadas
-- [ ] Mais aeronaves no simulador
-- [ ] Cenários de emergência
-- [ ] Sistema de conquistas
-- [ ] Comunidade de usuários
-- [ ] API pública
+## 👨‍💻 Desenvolvedor
+
+**Costanza Pasquotto Assef**
+
+- Desenvolvedor Full Stack
+- Especialista em React e JavaScript
+- Apaixonado por tecnologia e educação
+
+## 📞 Suporte
+
+Para suporte, dúvidas ou sugestões:
+
+- 📧 Email: [seu-email@exemplo.com]
+- 💬 Issues: [GitHub Issues](https://github.com/seu-usuario/aerocourse/issues)
+- 📱 Discord: [Link do servidor]
 
 ---
 
-**Desenvolvido com ❤️ para a comunidade aeronáutica**
+⭐ **Se este projeto te ajudou, considere dar uma estrela no repositório!**
 
-*AeroCourse - Transformando o aprendizado de aeronáutica através da tecnologia*
+🛩️ **AeroCourse** - Transformando o aprendizado de aeronáutica através da tecnologia.

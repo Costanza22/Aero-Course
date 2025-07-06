@@ -105,6 +105,23 @@
   border-radius: 10px;
 }
 
+.rotation-display {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.rotation-display span {
+  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
 .control-group {
   display: flex;
   gap: 0.5rem;
