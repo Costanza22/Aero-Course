@@ -151,11 +151,90 @@ button {
   color: #888;
   font-size: 0.95rem;
 }
-@media (max-width: 600px) {
+/* Responsividade Mobile */
+@media (max-width: 768px) {
   .certificate-card {
     padding: 1.2rem 0.5rem 1rem 0.5rem;
+    margin: 1rem;
+    max-width: 95%;
   }
   .certificate-paper {
     padding: 1rem 0.3rem;
   }
+  
+  .logout-btn {
+    top: 10px;
+    right: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    height: 40px;
+  }
+  
+  /* Ajustes gerais para mobile */
+  body {
+    font-size: 14px;
+  }
+  
+  .App {
+    overflow-x: hidden;
+  }
+  
+  /* Container principal responsivo */
+  .container, .main-container {
+    padding: 0 15px;
+    max-width: 100%;
+  }
+  
+  /* Botões responsivos */
+  button {
+    min-height: 44px; /* Tamanho mínimo para touch */
+    padding: 12px 20px;
+  }
+  
+  /* Cards e seções responsivas */
+  .card, .section {
+    margin: 10px 0;
+    padding: 15px;
+  }
+  
+  /* Grid responsivo */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  /* Flexbox responsivo */
+  .flex {
+    flex-direction: column;
+  }
+  
+  /* Texto responsivo */
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+  h4 { font-size: 1.1rem; }
+}
+
+@media (max-width: 480px) {
+  .certificate-card {
+    padding: 1rem 0.3rem;
+    margin: 0.5rem;
+  }
+  
+  .logout-btn {
+    top: 5px;
+    right: 5px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    height: 35px;
+  }
+  
+  body {
+    font-size: 13px;
+  }
+  
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.2rem; }
+  h4 { font-size: 1rem; }
 }

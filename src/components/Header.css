@@ -59,16 +59,43 @@
   .header-container {
     flex-direction: column;
     gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .logo h1 {
+    font-size: 1.5rem;
   }
   
   .nav {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.5rem;
   }
   
   .nav-button {
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 0.5rem;
+  }
+  
+  .logo h1 {
+    font-size: 1.3rem;
+  }
+  
+  .nav {
+    gap: 0.3rem;
+  }
+  
+  .nav-button {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    min-height: 40px;
   }
 }
 

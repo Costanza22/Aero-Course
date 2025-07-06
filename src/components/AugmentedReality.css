@@ -388,15 +388,128 @@
 }
 
 @media (max-width: 768px) {
+  .augmented-reality {
+    padding: 0.5rem;
+  }
+  
+  .ar-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .ar-header p {
+    font-size: 1rem;
+  }
+  
   .ar-container {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
   .ar-canvas {
     height: 300px;
   }
   
+  .ar-canvas-container {
+    min-height: 300px;
+  }
+  
+  .ar-placeholder {
+    padding: 1rem;
+  }
+  
+  .ar-placeholder h3 {
+    font-size: 1.2rem;
+  }
+  
+  .ar-activate-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .ar-controls {
+    padding: 0.8rem;
+  }
+  
+  .control-group button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    min-height: 44px;
+  }
+  
+  .component-selector {
+    padding: 1rem;
+  }
+  
+  .component-item {
+    padding: 0.8rem;
+  }
+  
   .ar-features {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .feature-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .augmented-reality {
+    padding: 0.3rem;
+  }
+  
+  .ar-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .ar-header p {
+    font-size: 0.9rem;
+  }
+  
+  .ar-canvas {
+    height: 250px;
+  }
+  
+  .ar-canvas-container {
+    min-height: 250px;
+  }
+  
+  .ar-placeholder {
+    padding: 0.8rem;
+  }
+  
+  .ar-placeholder h3 {
+    font-size: 1.1rem;
+  }
+  
+  .ar-activate-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .control-group {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .control-group button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    min-height: 40px;
+  }
+  
+  .component-selector {
+    padding: 0.8rem;
+  }
+  
+  .component-item {
+    padding: 0.6rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .feature-card {
+    padding: 0.8rem;
   }
 } 
