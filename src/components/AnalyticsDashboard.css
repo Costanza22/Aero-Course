@@ -1,0 +1,471 @@
+.analytics-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.dashboard-header h2 {
+  font-size: 2.5rem;
+  color: #2a5298;
+  margin-bottom: 1rem;
+}
+
+.dashboard-header p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.period-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.period-btn {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  color: #666;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.period-btn:hover {
+  border-color: #2a5298;
+  color: #2a5298;
+}
+
+.period-btn.active {
+  background: linear-gradient(45deg, #ffd700, #2a5298);
+  color: #fff;
+  border-color: transparent;
+}
+
+.stats-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: #fff;
+  border: 2px solid #e3f2fd;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(42, 82, 152, 0.1);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(42, 82, 152, 0.15);
+  border-color: #2a5298;
+}
+
+.stat-icon {
+  font-size: 3rem;
+  background: linear-gradient(45deg, #ffd700, #2a5298);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2a5298;
+  line-height: 1;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.charts-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.chart-container {
+  background: #fff;
+  border: 2px solid #e3f2fd;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(42, 82, 152, 0.1);
+}
+
+.chart-container h3 {
+  color: #2a5298;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+}
+
+.study-time-chart {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  height: 200px;
+  padding: 1rem 0;
+}
+
+.chart-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bar-fill {
+  width: 100%;
+  min-height: 20px;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.3s ease;
+}
+
+.bar-label {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+}
+
+.bar-value {
+  font-size: 0.8rem;
+  color: #2a5298;
+  font-weight: 600;
+}
+
+.quiz-scores-chart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0;
+  min-height: 100px;
+  align-items: center;
+}
+
+.score-dot {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.score-dot:hover {
+  transform: scale(1.1);
+}
+
+.score-value {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.no-data {
+  color: #999;
+  font-style: italic;
+  text-align: center;
+  width: 100%;
+}
+
+.module-progress-section {
+  background: #fff;
+  border: 2px solid #e3f2fd;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 15px rgba(42, 82, 152, 0.1);
+}
+
+.module-progress-section h3 {
+  color: #2a5298;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+}
+
+.module-progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.module-progress-card {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.module-progress-card:hover {
+  border-color: #2a5298;
+  transform: translateY(-2px);
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.module-header h4 {
+  color: #2a5298;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.progress-percentage {
+  background: linear-gradient(45deg, #ffd700, #2a5298);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.module-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.achievements-section {
+  background: #fff;
+  border: 2px solid #e3f2fd;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(42, 82, 152, 0.1);
+}
+
+.achievements-section h3 {
+  color: #2a5298;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.achievement {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.achievement.locked {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  opacity: 0.6;
+}
+
+.achievement.unlocked {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  border: 2px solid #22c55e;
+  color: #fff;
+}
+
+.achievement.unlocked:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+}
+
+.achievement-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.achievement-info h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.achievement-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.achievement.locked .achievement-info h4 {
+  color: #666;
+}
+
+.achievement.locked .achievement-info p {
+  color: #999;
+}
+
+/* Modo escuro */
+.dark-theme .analytics-dashboard {
+  background: var(--bg-primary);
+}
+
+.dark-theme .dashboard-header h2 {
+  color: var(--text-primary);
+}
+
+.dark-theme .dashboard-header p {
+  color: var(--text-secondary);
+}
+
+.dark-theme .period-btn {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border-color: var(--border-secondary);
+}
+
+.dark-theme .period-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.dark-theme .stat-card {
+  background: var(--bg-secondary);
+  border-color: var(--border-secondary);
+}
+
+.dark-theme .stat-card:hover {
+  border-color: var(--accent-primary);
+}
+
+.dark-theme .stat-number {
+  color: var(--accent-primary);
+}
+
+.dark-theme .stat-label {
+  color: var(--text-secondary);
+}
+
+.dark-theme .chart-container {
+  background: var(--bg-secondary);
+  border-color: var(--border-secondary);
+}
+
+.dark-theme .chart-container h3 {
+  color: var(--text-primary);
+}
+
+.dark-theme .bar-label {
+  color: var(--text-secondary);
+}
+
+.dark-theme .bar-value {
+  color: var(--accent-primary);
+}
+
+.dark-theme .module-progress-section {
+  background: var(--bg-secondary);
+  border-color: var(--border-secondary);
+}
+
+.dark-theme .module-progress-section h3 {
+  color: var(--text-primary);
+}
+
+.dark-theme .module-progress-card {
+  background: var(--bg-tertiary);
+  border-color: var(--border-secondary);
+}
+
+.dark-theme .module-progress-card:hover {
+  border-color: var(--accent-primary);
+}
+
+.dark-theme .module-header h4 {
+  color: var(--text-primary);
+}
+
+.dark-theme .progress-bar {
+  background: var(--border-secondary);
+}
+
+.dark-theme .module-stats {
+  color: var(--text-secondary);
+}
+
+.dark-theme .achievements-section {
+  background: var(--bg-secondary);
+  border-color: var(--border-secondary);
+}
+
+.dark-theme .achievements-section h3 {
+  color: var(--text-primary);
+}
+
+.dark-theme .achievement.locked {
+  background: var(--bg-tertiary);
+  border-color: var(--border-secondary);
+}
+
+@media (max-width: 768px) {
+  .analytics-dashboard {
+    padding: 1rem;
+  }
+  
+  .dashboard-header h2 {
+    font-size: 2rem;
+  }
+  
+  .stats-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .charts-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .study-time-chart {
+    height: 150px;
+  }
+  
+  .module-progress-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+} 

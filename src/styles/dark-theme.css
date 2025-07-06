@@ -1,0 +1,355 @@
+/* Modo Escuro - Aplicado quando .dark-theme está ativo */
+
+.dark-theme {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-tertiary: #0f3460;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #b0b0b0;
+  --accent-primary: #ffd700;
+  --accent-secondary: #2a5298;
+  --border-primary: #2a5298;
+  --border-secondary: #0f3460;
+  --shadow-primary: rgba(0, 0, 0, 0.3);
+  --shadow-secondary: rgba(42, 82, 152, 0.2);
+  --success-color: #4ade80;
+  --error-color: #f87171;
+  --warning-color: #fbbf24;
+}
+
+.dark-theme body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.dark-theme .App {
+  background: var(--bg-primary);
+}
+
+/* Header */
+.dark-theme .header {
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--border-primary);
+}
+
+.dark-theme .header h1,
+.dark-theme .logo h1 {
+  color: var(--text-primary) !important;
+}
+
+.dark-theme .nav-button {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
+}
+
+.dark-theme .nav-button:hover {
+  background: var(--accent-secondary);
+  color: var(--text-primary);
+}
+
+.dark-theme .nav-button.active {
+  background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+  color: var(--bg-primary);
+}
+
+/* Cards e Containers */
+.dark-theme .module-card,
+.dark-theme .course-card,
+.dark-theme .exercise-container,
+.dark-theme .grade-system,
+.dark-theme .flight-simulator,
+.dark-theme .interactive-exercises,
+.dark-theme .chat-container,
+.dark-theme .lesson-quiz {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-secondary);
+  box-shadow: 0 8px 32px var(--shadow-primary);
+}
+
+.dark-theme .module-page-content,
+.dark-theme .control-panel,
+.dark-theme .canvas-container {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-secondary);
+}
+
+/* Textos */
+.dark-theme h1, .dark-theme h2, .dark-theme h3, .dark-theme h4 {
+  color: var(--text-primary);
+}
+
+.dark-theme p {
+  color: var(--text-secondary);
+}
+
+/* Botões */
+.dark-theme button {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
+}
+
+.dark-theme button:hover {
+  background: var(--accent-secondary);
+  color: var(--text-primary);
+}
+
+.dark-theme .quiz-btn,
+.dark-theme .check-answer-btn,
+.dark-theme .submit-btn,
+.dark-theme .next-btn {
+  background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+  color: var(--bg-primary);
+}
+
+.dark-theme .quiz-btn:hover,
+.dark-theme .check-answer-btn:hover,
+.dark-theme .submit-btn:hover,
+.dark-theme .next-btn:hover {
+  background: linear-gradient(45deg, var(--accent-secondary), var(--accent-primary));
+}
+
+/* Inputs */
+.dark-theme input,
+.dark-theme select,
+.dark-theme textarea {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-secondary);
+}
+
+.dark-theme input:focus,
+.dark-theme select:focus,
+.dark-theme textarea:focus {
+  border-color: var(--accent-primary);
+  background: var(--bg-secondary);
+}
+
+/* Quiz e Exercícios */
+.dark-theme .quiz-option {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-secondary);
+  color: var(--text-primary);
+}
+
+.dark-theme .quiz-option:hover {
+  background: var(--accent-secondary);
+  border-color: var(--accent-primary);
+}
+
+.dark-theme .quiz-option.selected {
+  background: var(--accent-secondary);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.dark-theme .exercise-data {
+  background: var(--bg-tertiary);
+  border-left: 4px solid var(--accent-primary);
+}
+
+.dark-theme .exercise-question {
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border: 1px solid var(--border-primary);
+}
+
+/* Sistema de Notas */
+.dark-theme .grade-circle {
+  background: var(--bg-secondary);
+  border-color: var(--accent-primary);
+}
+
+.dark-theme .grade-stat {
+  background: var(--bg-tertiary);
+}
+
+.dark-theme .module-grade-card {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-secondary);
+}
+
+.dark-theme .lesson-grade-item {
+  background: var(--bg-tertiary);
+}
+
+.dark-theme .lesson-grade-item:hover {
+  background: var(--accent-secondary);
+}
+
+/* Chat */
+.dark-theme .chat-messages {
+  background: var(--bg-tertiary);
+}
+
+.dark-theme .chat-message {
+  background: var(--bg-secondary);
+}
+
+.dark-theme .chat-message.instructor {
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border-left: 4px solid var(--accent-primary);
+}
+
+.dark-theme .chat-welcome {
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border: 1px solid var(--border-primary);
+}
+
+/* Footer */
+.dark-theme .footer {
+  background: var(--bg-secondary);
+  border-top: 2px solid var(--border-primary);
+}
+
+.dark-theme .footer-section h3,
+.dark-theme .footer-section h4 {
+  color: var(--text-primary);
+}
+
+.dark-theme .footer-section p,
+.dark-theme .footer-section li {
+  color: var(--text-secondary);
+}
+
+.dark-theme .footer-link-btn {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
+}
+
+.dark-theme .footer-link-btn:hover {
+  background: var(--accent-secondary);
+  color: var(--text-primary);
+}
+
+/* Simulador */
+.dark-theme .simulator-canvas {
+  border: 2px solid var(--accent-primary);
+}
+
+.dark-theme .control-slider {
+  background: var(--bg-tertiary);
+}
+
+.dark-theme .control-slider::-webkit-slider-thumb {
+  background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.dark-theme .control-group span {
+  background: var(--bg-tertiary);
+  color: var(--accent-primary);
+  border: 1px solid var(--border-secondary);
+}
+
+/* Scrollbar personalizada para modo escuro */
+.dark-theme ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: var(--accent-secondary);
+  border-radius: 4px;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Resultados e feedback */
+.dark-theme .result-message.correct {
+  background: var(--success-color);
+  color: var(--bg-primary);
+}
+
+.dark-theme .result-message.incorrect {
+  background: var(--error-color);
+  color: var(--bg-primary);
+}
+
+.dark-theme .exercise-solution {
+  background: var(--bg-secondary);
+  border-left: 4px solid var(--success-color);
+}
+
+/* Logout button */
+.dark-theme .logout-btn {
+  background: linear-gradient(45deg, var(--accent-secondary), var(--bg-tertiary));
+  color: var(--text-primary);
+}
+
+.dark-theme .logout-btn:hover {
+  background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+  color: var(--bg-primary);
+}
+
+/* Hero e componentes da página inicial */
+.dark-theme .hero {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+}
+
+.dark-theme .hero h1,
+.dark-theme .hero h2,
+.dark-theme .hero h3 {
+  color: var(--text-primary);
+}
+
+.dark-theme .hero p {
+  color: var(--text-secondary);
+}
+
+.dark-theme .hero-btn {
+  background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+  color: var(--bg-primary);
+}
+
+.dark-theme .hero-btn:hover {
+  background: linear-gradient(45deg, var(--accent-secondary), var(--accent-primary));
+}
+
+/* CourseContent e outros componentes */
+.dark-theme .course-content,
+.dark-theme .module-list {
+  background: var(--bg-primary);
+}
+
+.dark-theme .module-item {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-secondary);
+}
+
+.dark-theme .module-item:hover {
+  border-color: var(--accent-primary);
+}
+
+.dark-theme .module-title {
+  color: var(--text-primary);
+}
+
+.dark-theme .module-description {
+  color: var(--text-secondary);
+}
+
+/* About e outros componentes */
+.dark-theme .about,
+.dark-theme .library,
+.dark-theme .forum {
+  background: var(--bg-primary);
+}
+
+.dark-theme .about h2,
+.dark-theme .library h2,
+.dark-theme .forum h2 {
+  color: var(--text-primary);
+}
+
+.dark-theme .about p,
+.dark-theme .library p,
+.dark-theme .forum p {
+  color: var(--text-secondary);
+} 

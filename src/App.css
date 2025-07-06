@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a6fd8;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logout-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 0.6rem 1.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.15);
+  z-index: 2000;
+  transition: background 0.2s;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logout-btn:hover {
+  background: linear-gradient(45deg, #ffd700, #764ba2);
+  color: #333;
+}
+
+.certificate-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0 4rem 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+.certificate-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(30, 60, 114, 0.13);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+  border: 2px solid #ffd700;
+}
+.certificate-card h2 {
+  color: #2a5298;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.certificate-paper {
+  background: #fdf6e3;
+  border: 1.5px dashed #ffd700;
+  border-radius: 12px;
+  margin: 2rem 0 0 0;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.08);
+}
+.certificate-paper h3 {
+  color: #bfa100;
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+}
+.certificate-sign {
+  margin-top: 1.5rem;
+  font-family: 'Brush Script MT', cursive, sans-serif;
+  font-size: 1.3rem;
+  color: #2a5298;
+}
+.certificate-date {
+  margin-top: 0.5rem;
+  color: #888;
+  font-size: 0.95rem;
+}
+@media (max-width: 600px) {
+  .certificate-card {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+  .certificate-paper {
+    padding: 1rem 0.3rem;
+  }
+}
