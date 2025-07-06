@@ -2,18 +2,6 @@
 
 Uma plataforma educacional interativa e moderna para o ensino de aeronáutica, desenvolvida em React com recursos avançados de simulação, realidade aumentada e aprendizado interativo.
 
-## 📋 Índice
-
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Instalação](#instalação)
-- [Como Usar](#como-usar)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Componentes Principais](#componentes-principais)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-
 ## 🎯 Sobre o Projeto
 
 O AeroCourse é uma plataforma educacional completa que oferece uma experiência de aprendizado imersiva para estudantes de aeronáutica. Combinando teoria, simulação prática e recursos interativos, a plataforma proporciona uma jornada educacional única no campo da aviação.
@@ -225,23 +213,13 @@ Contribuições são bem-vindas! Para contribuir:
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 👨‍💻 Desenvolvedor
+## 👨‍💻 Desenvolvedora
 
 **Costanza Pasquotto Assef**
 
-- Desenvolvedor Full Stack
+- Desenvolvedora Full Stack
 - Especialista em React e JavaScript
-- Apaixonado por tecnologia e educação
-
-## 📞 Suporte
-
-Para suporte, dúvidas ou sugestões:
-
-- 📧 Email: [seu-email@exemplo.com]
-- 💬 Issues: [GitHub Issues](https://github.com/seu-usuario/aerocourse/issues)
-- 📱 Discord: [Link do servidor]
-
----
+- Apaixonada por tecnologia
 
 ⭐ **Se este projeto te ajudou, considere dar uma estrela no repositório!**
 
