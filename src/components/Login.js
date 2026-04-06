@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
+import { Plane } from 'lucide-react';
 import './Login.css';
 
 const Login = ({ onLogin }) => {
@@ -24,7 +27,7 @@ const Login = ({ onLogin }) => {
         return;
       }
       const users = JSON.parse(localStorage.getItem('users') || '[]');
-      if (users.find(u => u.email === email)) {
+      if (users.find((u) => u.email === email)) {
         setError('E-mail já cadastrado.');
         return;
       }
@@ -38,7 +41,7 @@ const Login = ({ onLogin }) => {
       setConfirmPassword('');
     } else {
       const users = JSON.parse(localStorage.getItem('users') || '[]');
-      const user = users.find(u => u.email === email && u.password === password);
+      const user = users.find((u) => u.email === email && u.password === password);
       if (!user) {
         setError('E-mail ou senha inválidos.');
         return;
@@ -52,7 +55,9 @@ const Login = ({ onLogin }) => {
     <div className="login-container aviation-theme">
       <form className="login-form aviation-form" onSubmit={handleSubmit}>
         <div className="login-logo">
-          <span className="login-emoji">✈️</span>
+          <span className="login-icon-wrap" aria-hidden>
+            <Plane size={40} strokeWidth={1.75} />
+          </span>
           <h1>AeroCourse</h1>
         </div>
         <h2>{isRegister ? 'Cadastro' : 'Login'}</h2>
@@ -61,27 +66,27 @@ const Login = ({ onLogin }) => {
             type="text"
             placeholder="Nome completo"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         )}
         <input
           type="email"
           placeholder="E-mail"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Senha"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
         {isRegister && (
           <input
             type="password"
             placeholder="Confirme a senha"
             value={confirmPassword}
-            onChange={e => setConfirmPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         )}
         {error && <div className="login-error">{error}</div>}
@@ -89,19 +94,39 @@ const Login = ({ onLogin }) => {
         <button type="submit">{isRegister ? 'Cadastrar' : 'Entrar'}</button>
         <div className="login-toggle">
           {isRegister ? (
-            <span>Já tem conta? <button type="button" onClick={() => { setIsRegister(false); setError(''); setSuccess(''); }}>Entrar</button></span>
+            <span>
+              Já tem conta?{' '}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsRegister(false);
+                  setError('');
+                  setSuccess('');
+                }}
+              >
+                Entrar
+              </button>
+            </span>
           ) : (
-            <span>Não tem conta? <button type="button" onClick={() => { setIsRegister(true); setError(''); setSuccess(''); }}>Cadastre-se</button></span>
+            <span>
+              Não tem conta?{' '}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsRegister(true);
+                  setError('');
+                  setSuccess('');
+                }}
+              >
+                Cadastre-se
+              </button>
+            </span>
           )}
         </div>
       </form>
-      <div className="login-bg-clouds">
-        <div className="cloud cloud1">☁️</div>
-        <div className="cloud cloud2">☁️</div>
-        <div className="cloud cloud3">☁️</div>
-      </div>
+      <div className="login-bg-decor" aria-hidden />
     </div>
   );
 };
 
-export default Login; 
+export default Login;
