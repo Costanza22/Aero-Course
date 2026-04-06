@@ -1,7 +1,103 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './AnalyticsDashboard.css';
 import { IconByName } from '@/components/ui/IconByName';
 import { FileText, Check } from 'lucide-react';
+
+function calculateStreak(studyLog) {
+  if (studyLog.length === 0) return 0;
+
+  let streak = 0;
+  const sortedLog = studyLog.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  for (let i = 0; i < sortedLog.length; i++) {
+    const logDate = new Date(sortedLog[i].date).toDateString();
+    const expectedDate = new Date();
+    expectedDate.setDate(expectedDate.getDate() - i);
+
+    if (logDate === expectedDate.toDateString()) {
+      streak++;
+    } else {
+      break;
+    }
+  }
+
+  return streak;
+}
+
+function calculateStats(progress, grades, studyLog) {
+  const totalModules = 6;
+  const completedModules = progress.length;
+  const totalTime = studyLog.reduce((sum, log) => sum + (log.duration || 0), 0);
+
+  const allScores = [];
+  Object.values(grades).forEach((moduleGrades) => {
+    Object.values(moduleGrades).forEach((lessonGrade) => {
+      if (lessonGrade.score !== undefined) {
+        allScores.push(lessonGrade.score);
+      }
+    });
+  });
+  const averageScore =
+    allScores.length > 0
+      ? Math.round(allScores.reduce((sum, score) => sum + score, 0) / allScores.length)
+      : 0;
+
+  const streakDays = calculateStreak(studyLog);
+
+  return {
+    streakDays,
+    totalTime,
+    averageScore,
+    completedModules,
+    certificates: completedModules === totalModules ? 1 : 0,
+  };
+}
+
+function generateStudyTimeData(period) {
+  const data = [];
+  const days = period === 'week' ? 7 : period === 'month' ? 30 : 90;
+
+  for (let i = days - 1; i >= 0; i--) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    data.push({
+      date: date.toLocaleDateString('pt-BR', { month: 'short', day: 'numeric' }),
+      time: Math.floor(Math.random() * 120) + 30,
+      modules: Math.floor(Math.random() * 3) + 1,
+    });
+  }
+  return data;
+}
+
+function calculateQuizScores(grades) {
+  const scores = [];
+  Object.values(grades).forEach((moduleGrades) => {
+    Object.values(moduleGrades).forEach((lessonGrade) => {
+      if (lessonGrade.score !== undefined) {
+        scores.push(lessonGrade.score);
+      }
+    });
+  });
+  return scores;
+}
+
+function calculateModuleProgress(progress) {
+  const modules = [
+    'Fundamentos da Aviação',
+    'Sistemas de Aeronaves',
+    'Navegação Aérea',
+    'Meteorologia Aeronáutica',
+    'Regulamentação Aeronáutica',
+    'Manutenção de Aeronaves',
+  ];
+
+  return modules.map((module, index) => ({
+    name: module,
+    progress: progress.includes(index + 1) ? 100 : Math.floor(Math.random() * 80),
+    lessons: progress.includes(index + 1) ? 5 : Math.floor(Math.random() * 5),
+    quizzes: progress.includes(index + 1) ? 5 : Math.floor(Math.random() * 5),
+  }));
+}
 
 const AnalyticsDashboard = ({ user }) => {
   const [selectedPeriod, setSelectedPeriod] = useState('week');
@@ -16,26 +112,14 @@ const AnalyticsDashboard = ({ user }) => {
     certificates: 0
   });
 
-  useEffect(() => {
-    loadAnalyticsData();
-  }, [selectedPeriod]);
-
-  const loadAnalyticsData = () => {
-    // Carregar dados do localStorage
+  const loadAnalyticsData = useCallback(() => {
     const progress = JSON.parse(localStorage.getItem('aerocourse_progress') || '[]');
     const grades = JSON.parse(localStorage.getItem('aerocourse_grades') || '{}');
     const studyLog = JSON.parse(localStorage.getItem('aerocourse_study_log') || '[]');
 
-    // Simular dados de tempo de estudo
     const studyTimeData = generateStudyTimeData(selectedPeriod);
-    
-    // Calcular scores dos quizzes
     const quizScoresData = calculateQuizScores(grades);
-    
-    // Progresso dos módulos
     const moduleProgressData = calculateModuleProgress(progress);
-    
-    // Calcular estatísticas
     const stats = calculateStats(progress, grades, studyLog);
 
     setAnalyticsData({
@@ -44,104 +128,11 @@ const AnalyticsDashboard = ({ user }) => {
       moduleProgress: moduleProgressData,
       ...stats
     });
-  };
+  }, [selectedPeriod]);
 
-  const generateStudyTimeData = (period) => {
-    const data = [];
-    const days = period === 'week' ? 7 : period === 'month' ? 30 : 90;
-    
-    for (let i = days - 1; i >= 0; i--) {
-      const date = new Date();
-      date.setDate(date.getDate() - i);
-      data.push({
-        date: date.toLocaleDateString('pt-BR', { month: 'short', day: 'numeric' }),
-        time: Math.floor(Math.random() * 120) + 30, // 30-150 minutos
-        modules: Math.floor(Math.random() * 3) + 1
-      });
-    }
-    return data;
-  };
-
-  const calculateQuizScores = (grades) => {
-    const scores = [];
-    Object.values(grades).forEach(moduleGrades => {
-      Object.values(moduleGrades).forEach(lessonGrade => {
-        if (lessonGrade.score !== undefined) {
-          scores.push(lessonGrade.score);
-        }
-      });
-    });
-    return scores;
-  };
-
-  const calculateModuleProgress = (progress) => {
-    const modules = [
-      'Fundamentos da Aviação',
-      'Sistemas de Aeronaves',
-      'Navegação Aérea',
-      'Meteorologia Aeronáutica',
-      'Regulamentação Aeronáutica',
-      'Manutenção de Aeronaves'
-    ];
-
-    return modules.map((module, index) => ({
-      name: module,
-      progress: progress.includes(index + 1) ? 100 : Math.floor(Math.random() * 80),
-      lessons: progress.includes(index + 1) ? 5 : Math.floor(Math.random() * 5),
-      quizzes: progress.includes(index + 1) ? 5 : Math.floor(Math.random() * 5)
-    }));
-  };
-
-  const calculateStats = (progress, grades, studyLog) => {
-    const totalModules = 6;
-    const completedModules = progress.length;
-    const totalTime = studyLog.reduce((sum, log) => sum + (log.duration || 0), 0);
-    
-    // Calcular média dos scores
-    const allScores = [];
-    Object.values(grades).forEach(moduleGrades => {
-      Object.values(moduleGrades).forEach(lessonGrade => {
-        if (lessonGrade.score !== undefined) {
-          allScores.push(lessonGrade.score);
-        }
-      });
-    });
-    const averageScore = allScores.length > 0 ? 
-      Math.round(allScores.reduce((sum, score) => sum + score, 0) / allScores.length) : 0;
-
-    // Calcular streak de dias
-    const streakDays = calculateStreak(studyLog);
-
-    return {
-      streakDays,
-      totalTime,
-      averageScore,
-      completedModules,
-      certificates: completedModules === totalModules ? 1 : 0
-    };
-  };
-
-  const calculateStreak = (studyLog) => {
-    if (studyLog.length === 0) return 0;
-    
-    let streak = 0;
-    const today = new Date().toDateString();
-    const sortedLog = studyLog.sort((a, b) => new Date(b.date) - new Date(a.date));
-    
-    for (let i = 0; i < sortedLog.length; i++) {
-      const logDate = new Date(sortedLog[i].date).toDateString();
-      const expectedDate = new Date();
-      expectedDate.setDate(expectedDate.getDate() - i);
-      
-      if (logDate === expectedDate.toDateString()) {
-        streak++;
-      } else {
-        break;
-      }
-    }
-    
-    return streak;
-  };
+  useEffect(() => {
+    loadAnalyticsData();
+  }, [loadAnalyticsData]);
 
   const getPerformanceColor = (score) => {
     if (score >= 90) return '#4ade80';

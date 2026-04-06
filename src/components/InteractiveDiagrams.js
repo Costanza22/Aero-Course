@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import './InteractiveDiagrams.css';
 import {
   BarChart3,
@@ -292,10 +293,14 @@ const InteractiveDiagrams = () => {
 
           <div className="diagram-canvas">
             <div className="diagram-image-container">
-              <img 
-                src={currentDiagram.image} 
+              <Image
+                src={currentDiagram.image}
                 alt={currentDiagram.title}
+                width={600}
+                height={400}
                 className="diagram-image"
+                sizes="(max-width: 768px) 100vw, min(600px, 100%)"
+                priority={selectedDiagram === 0}
               />
               
               <div className="interactive-overlay">

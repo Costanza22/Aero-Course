@@ -2,14 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './AugmentedReality.css';
 import { Glasses, Target, RotateCw, RotateCcw, RefreshCw, Wrench, Smartphone, Ruler } from 'lucide-react';
 
-const AugmentedReality = () => {
-  const [selectedComponent, setSelectedComponent] = useState(0);
-  const [isARActive, setIsARActive] = useState(false);
-  const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 });
-  const canvasRef = useRef(null);
-  const animationRef = useRef(null);
-
-  const components = [
+const AR_COMPONENTS = [
     {
       id: 1,
       name: "Motor Turbofan",
@@ -86,53 +79,16 @@ const AugmentedReality = () => {
         { name: "Distribuição", description: "Painéis de distribuição" }
       ]
     }
-  ];
+];
 
-  useEffect(() => {
-    if (isARActive) {
-      animate3DModel();
-    }
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [isARActive, selectedComponent]);
-
-  const animate3DModel = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-
-    // Simular renderização 3D
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Desenhar componente 3D simulado
-    draw3DComponent(ctx, centerX, centerY);
-    
-    // Atualizar rotação
-    setRotation(prev => ({
-      x: prev.x + 0.5,
-      y: prev.y + 0.3,
-      z: prev.z + 0.1
-    }));
-
-    animationRef.current = requestAnimationFrame(animate3DModel);
-  };
-
-  const draw3DComponent = (ctx, centerX, centerY) => {
-    const component = components[selectedComponent];
-    
+function draw3DComponent(ctx, centerX, centerY, rot, component) {
     // Aplicar transformações de rotação
     ctx.save();
     ctx.translate(centerX, centerY);
-    ctx.rotate((rotation.x + rotation.y) * Math.PI / 180);
-    
+    ctx.rotate((rot.x + rot.y) * Math.PI / 180);
+
     // Desenhar base do componente com efeito 3D
-    const depth = Math.sin(rotation.z * Math.PI / 180) * 20;
+    const depth = Math.sin(rot.z * Math.PI / 180) * 20;
     
     // Sombra/backface
     ctx.fillStyle = '#1a3a6b';
@@ -159,7 +115,47 @@ const AugmentedReality = () => {
     
     // Restaurar contexto
     ctx.restore();
-  };
+}
+
+const AugmentedReality = () => {
+  const [selectedComponent, setSelectedComponent] = useState(0);
+  const [isARActive, setIsARActive] = useState(false);
+  const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 });
+  const canvasRef = useRef(null);
+  const animationRef = useRef(null);
+
+  useEffect(() => {
+    if (!isARActive) return;
+
+    const animate = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const component = AR_COMPONENTS[selectedComponent];
+
+      setRotation((prev) => {
+        const next = {
+          x: prev.x + 0.5,
+          y: prev.y + 0.3,
+          z: prev.z + 0.1,
+        };
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        draw3DComponent(ctx, centerX, centerY, next, component);
+        return next;
+      });
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isARActive, selectedComponent]);
 
   const requestCameraPermission = async () => {
     try {
@@ -273,7 +269,7 @@ const AugmentedReality = () => {
           <div className="component-selector">
             <h3>Componentes Disponíveis</h3>
             <div className="component-list">
-              {components.map((component, index) => (
+              {AR_COMPONENTS.map((component, index) => (
                 <div
                   key={component.id}
                   className={`component-item ${index === selectedComponent ? 'active' : ''}`}
@@ -291,15 +287,15 @@ const AugmentedReality = () => {
             </div>
           </div>
 
-          {components[selectedComponent] && (
+          {AR_COMPONENTS[selectedComponent] && (
             <div className="component-details">
-              <h3>{components[selectedComponent].name}</h3>
-              <p>{components[selectedComponent].description}</p>
+              <h3>{AR_COMPONENTS[selectedComponent].name}</h3>
+              <p>{AR_COMPONENTS[selectedComponent].description}</p>
               
               <div className="specifications">
                 <h4>Especificações Técnicas</h4>
                 <div className="spec-grid">
-                  {Object.entries(components[selectedComponent].specifications).map(([key, value]) => (
+                  {Object.entries(AR_COMPONENTS[selectedComponent].specifications).map(([key, value]) => (
                     <div key={key} className="spec-item">
                       <span className="spec-label">{key}:</span>
                       <span className="spec-value">{value}</span>
@@ -311,7 +307,7 @@ const AugmentedReality = () => {
               <div className="parts-list">
                 <h4>Partes Principais</h4>
                 <ul>
-                  {components[selectedComponent].parts.map((part, index) => (
+                  {AR_COMPONENTS[selectedComponent].parts.map((part, index) => (
                     <li key={index}>
                       <strong>{part.name}:</strong> {part.description}
                     </li>

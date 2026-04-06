@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import {
   Phone,
   Camera,
@@ -28,7 +29,14 @@ const About = () => {
         <div className="about-content">
           <div className="about-profile">
             <div className="profile-image">
-              <img src={fotoCostanza} alt="Foto de Costanza" className="profile-photo" />
+              <Image
+                src={fotoCostanza}
+                alt="Foto de Costanza"
+                width={150}
+                height={150}
+                className="profile-photo"
+                priority
+              />
             </div>
             <div className="profile-info">
               <h3>Costanza Pasquotto Assef</h3>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import './VirtualTour.css';
 import {
   Video,
@@ -162,7 +163,13 @@ const VirtualTour = () => {
                 className={`thumbnail ${index === currentTour ? 'active' : ''}`}
                 onClick={() => setCurrentTour(index)}
               >
-                <img src={tour.thumbnail} alt={tour.title} />
+                <Image
+                  src={tour.thumbnail}
+                  alt={tour.title}
+                  width={60}
+                  height={40}
+                  sizes="60px"
+                />
                 <span>{tour.title}</span>
               </div>
             ))}

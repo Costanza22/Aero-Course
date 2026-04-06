@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Bell,
   Check,
@@ -36,47 +36,33 @@ const NotificationSystem = ({ user, className = '' }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [permission, setPermission] = useState('default');
 
-  useEffect(() => {
-    // Carregar notificações salvas
-    const savedNotifications = localStorage.getItem('aerocourse_notifications');
-    if (savedNotifications) {
-      setNotifications(JSON.parse(savedNotifications));
+  const addNotification = useCallback((notification) => {
+    setNotifications((prev) => [notification, ...prev.slice(0, 9)]);
+
+    if (permission === 'granted') {
+      new Notification(notification.title, {
+        body: notification.message,
+        icon: '/favicon.ico',
+        badge: '/favicon.ico',
+      });
     }
+  }, [permission]);
 
-    // Verificar permissão de notificações
-    if ('Notification' in window) {
-      setPermission(Notification.permission);
-    }
-
-    // Simular notificações automáticas
-    const interval = setInterval(() => {
-      checkForNewNotifications();
-    }, 30000); // Verificar a cada 30 segundos
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('aerocourse_notifications', JSON.stringify(notifications));
-  }, [notifications]);
-
-  const checkForNewNotifications = () => {
+  const checkForNewNotifications = useCallback(() => {
     const now = new Date();
     const lastLogin = localStorage.getItem('last_login');
-    
-    // Simular notificações baseadas no tempo
-    if (!lastLogin || (now - new Date(lastLogin)) > 24 * 60 * 60 * 1000) {
+
+    if (!lastLogin || now - new Date(lastLogin) > 24 * 60 * 60 * 1000) {
       addNotification({
         id: Date.now(),
         type: 'reminder',
         title: 'Lembrete de Estudo',
         message: 'Não esqueça de continuar seus estudos! Há novos módulos aguardando.',
         timestamp: now,
-        read: false
+        read: false,
       });
     }
 
-    // Verificar progresso e sugerir próximos passos
     const progress = JSON.parse(localStorage.getItem('aerocourse_progress') || '[]');
     if (progress.length > 0 && progress.length < 6) {
       addNotification({
@@ -85,23 +71,33 @@ const NotificationSystem = ({ user, className = '' }) => {
         title: 'Continue seu Progresso',
         message: `Você completou ${progress.length} de 6 módulos. Continue assim!`,
         timestamp: now,
-        read: false
+        read: false,
       });
     }
-  };
+  }, [addNotification]);
 
-  const addNotification = (notification) => {
-    setNotifications(prev => [notification, ...prev.slice(0, 9)]); // Manter apenas 10 notificações
-    
-    // Enviar notificação push se permitido
-    if (permission === 'granted') {
-      new Notification(notification.title, {
-        body: notification.message,
-        icon: '/favicon.ico',
-        badge: '/favicon.ico'
-      });
+  useEffect(() => {
+    const savedNotifications = localStorage.getItem('aerocourse_notifications');
+    if (savedNotifications) {
+      setNotifications(JSON.parse(savedNotifications));
     }
-  };
+
+    if ('Notification' in window) {
+      setPermission(Notification.permission);
+    }
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      checkForNewNotifications();
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, [checkForNewNotifications]);
+
+  useEffect(() => {
+    localStorage.setItem('aerocourse_notifications', JSON.stringify(notifications));
+  }, [notifications]);
 
   const requestPermission = async () => {
     if ('Notification' in window) {
