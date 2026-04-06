@@ -1,0 +1,158 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.certificate-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0 4rem;
+  background: linear-gradient(180deg, #eef2f0 0%, var(--ac-paper) 100%);
+}
+
+.certificate-card {
+  background: #fffef9;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(15, 23, 42, 0.08);
+  padding: 2.5rem 2rem 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+  border: 1px solid var(--ac-border);
+  border-top: 3px solid var(--ac-teal);
+}
+
+.certificate-card h2,
+.certificate-heading {
+  color: var(--ac-slate);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.certificate-heading svg {
+  flex-shrink: 0;
+  color: var(--ac-teal-deep);
+}
+
+.certificate-paper {
+  background: #fff;
+  border: 1px dashed var(--ac-amber);
+  border-radius: 12px;
+  margin: 2rem 0 0;
+  padding: 1.5rem 1rem;
+  box-shadow: inset 0 0 0 1px rgba(217, 119, 6, 0.08);
+}
+
+.certificate-paper h3 {
+  color: var(--ac-amber);
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+}
+
+.certificate-sign {
+  margin-top: 1.5rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--ac-teal-deep);
+}
+
+.certificate-date {
+  margin-top: 0.5rem;
+  color: var(--ac-muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .certificate-card {
+    padding: 1.2rem 0.5rem 1rem;
+    margin: 1rem;
+    max-width: 95%;
+  }
+
+  .certificate-paper {
+    padding: 1rem 0.3rem;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .App {
+    overflow-x: hidden;
+  }
+
+  .container,
+  .main-container {
+    padding: 0 15px;
+    max-width: 100%;
+  }
+
+  button {
+    min-height: 44px;
+    padding: 12px 20px;
+  }
+
+  .card,
+  .section {
+    margin: 10px 0;
+    padding: 15px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+  }
+  h4 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .certificate-card {
+    padding: 1rem 0.3rem;
+    margin: 0.5rem;
+  }
+
+  body {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+}
