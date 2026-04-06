@@ -10,7 +10,8 @@
   margin-bottom: 3rem;
 }
 
-.content-header h1 {
+.content-header h1,
+.interactive-content-title {
   font-size: 2.8rem;
   color: #2a5298;
   margin-bottom: 1rem;
@@ -18,6 +19,20 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.interactive-content-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.interactive-content-title-icon {
+  -webkit-text-fill-color: #2a5298;
+  color: #2a5298;
+  flex-shrink: 0;
 }
 
 .content-header p {

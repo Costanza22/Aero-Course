@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+import {
+  Target,
+  BookOpen,
+  CheckCircle2,
+  XCircle,
+  PartyPopper,
+  RefreshCw,
+} from 'lucide-react';
 import './LessonQuiz.css';
 
 // Banco de questões por lição
@@ -236,28 +244,46 @@ const LessonQuiz = ({ moduleId, lessonIndex, onComplete }) => {
     return (
       <div className="lesson-quiz">
         <div className="quiz-results">
-          <h3>🎯 Resultado do Quiz</h3>
+          <h3 className="quiz-title-with-icon">
+            <Target size={22} strokeWidth={2} aria-hidden />
+            Resultado do quiz
+          </h3>
           <div className={`score-display ${passed ? 'passed' : 'failed'}`}>
             <div className="score-percentage">{percentage.toFixed(0)}%</div>
             <div className="score-text">
               {finalScore} de {questions.length} acertos
             </div>
             <div className="score-status">
-              {passed ? '✅ Aprovado!' : '❌ Reprovado'}
+              {passed ? (
+                <>
+                  <CheckCircle2 size={18} strokeWidth={2} aria-hidden /> Aprovado
+                </>
+              ) : (
+                <>
+                  <XCircle size={18} strokeWidth={2} aria-hidden /> Reprovado
+                </>
+              )}
             </div>
           </div>
           {passed && (
             <div className="congratulations">
-              <p>🎉 Parabéns! Você demonstrou conhecimento nesta lição!</p>
+              <p className="quiz-line-with-icon">
+                <PartyPopper size={18} strokeWidth={2} aria-hidden />
+                Parabéns — você demonstrou conhecimento nesta lição.
+              </p>
             </div>
           )}
           {!passed && (
             <div className="retry-message">
-              <p>📚 Continue estudando e tente novamente!</p>
+              <p className="quiz-line-with-icon">
+                <BookOpen size={18} strokeWidth={2} aria-hidden />
+                Continue estudando e tente novamente.
+              </p>
             </div>
           )}
-          <button className="retry-btn" onClick={handleRetry}>
-            🔄 Tentar Novamente
+          <button type="button" className="retry-btn" onClick={handleRetry}>
+            <RefreshCw size={16} strokeWidth={2} aria-hidden />
+            Tentar novamente
           </button>
         </div>
       </div>
@@ -267,7 +293,10 @@ const LessonQuiz = ({ moduleId, lessonIndex, onComplete }) => {
   return (
     <div className="lesson-quiz">
       <div className="quiz-header">
-        <h3>🎯 Quiz da Lição</h3>
+        <h3 className="quiz-title-with-icon">
+          <Target size={22} strokeWidth={2} aria-hidden />
+          Quiz da lição
+        </h3>
         <div className="quiz-progress">
           Questão {currentQuestion + 1} de {questions.length}
         </div>
@@ -302,7 +331,15 @@ const LessonQuiz = ({ moduleId, lessonIndex, onComplete }) => {
       {showResult && (
         <div className="quiz-feedback">
           <div className={`feedback-message ${selectedAnswer === currentQ.correct ? 'correct' : 'incorrect'}`}>
-            {selectedAnswer === currentQ.correct ? '✅ Correto!' : '❌ Incorreto!'}
+            {selectedAnswer === currentQ.correct ? (
+              <>
+                <CheckCircle2 size={22} className="feedback-icon" aria-hidden /> Correto!
+              </>
+            ) : (
+              <>
+                <XCircle size={22} className="feedback-icon" aria-hidden /> Incorreto!
+              </>
+            )}
           </div>
           <div className="explanation">
             <strong>Explicação:</strong> {currentQ.explanation}

@@ -7,10 +7,19 @@
   margin-bottom: 2rem;
 }
 
-.diagrams-header h2 {
+.diagrams-header h2,
+.diagrams-header-title {
   font-size: 2rem;
   color: #2a5298;
   margin-bottom: 0.5rem;
+}
+
+.diagrams-header-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .diagrams-header p {
@@ -69,7 +78,18 @@
 }
 
 .tab-icon {
-  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.diagram-tab.active .tab-icon svg {
+  color: #fff;
+}
+
+.tab-icon svg {
+  color: #2a5298;
 }
 
 .tab-title {
@@ -241,6 +261,10 @@
 }
 
 .control-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   background: linear-gradient(45deg, #ffd700, #2a5298);
   color: white;
   border: none;
@@ -448,10 +472,19 @@
   text-align: center;
 }
 
-.feature-card h4 {
+.feature-card h4,
+.diagram-feature-title {
   color: #2a5298;
   margin: 0 0 1rem 0;
   font-size: 1.1rem;
+}
+
+.diagram-feature-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
 }
 
 .feature-card p {

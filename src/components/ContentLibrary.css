@@ -9,10 +9,24 @@
   margin-bottom: 3rem;
 }
 
-.library-header h2 {
+.library-header h2,
+.library-header-title {
   font-size: 2.5rem;
   color: #2a5298;
   margin-bottom: 1rem;
+}
+
+.library-header-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.library-header-title svg {
+  flex-shrink: 0;
+  color: #2a5298;
 }
 
 .library-header p {
@@ -86,7 +100,9 @@
 }
 
 .category-icon {
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content-grid {
@@ -120,11 +136,14 @@
 }
 
 .content-icon {
-  font-size: 2.5rem;
-  background: linear-gradient(45deg, #ffd700, #2a5298);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a5298;
+}
+
+.content-icon svg {
+  color: #2a5298;
 }
 
 .content-type {
@@ -346,10 +365,17 @@
   border: 2px solid #e9ecef;
 }
 
-.library-info h4 {
+.library-info h4,
+.library-info-heading {
   color: #2a5298;
   margin-bottom: 1rem;
   font-size: 1.2rem;
+}
+
+.library-info-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .library-info ul {
@@ -359,9 +385,18 @@
 }
 
 .library-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
   padding: 0.5rem 0;
   color: #333;
   font-size: 1rem;
+}
+
+.library-info-check {
+  flex-shrink: 0;
+  margin-top: 0.2em;
+  color: #0d9488;
 }
 
 /* Modo escuro */

@@ -1,43 +1,38 @@
 import React from 'react';
+import { ModuleIcon } from './ui/ModuleIcon';
 import './ModuleList.css';
 
 const modules = [
   {
     id: 1,
     title: 'Fundamentos da Aeronáutica',
-    icon: '🛩️',
-    description: 'Princípios básicos de voo e aerodinâmica.'
+    description: 'Princípios básicos de voo e aerodinâmica.',
   },
   {
     id: 2,
     title: 'Sistemas de Aeronaves',
-    icon: '⚙️',
-    description: 'Componentes e sistemas essenciais das aeronaves.'
+    description: 'Componentes e sistemas essenciais das aeronaves.',
   },
   {
     id: 3,
     title: 'Navegação Aérea',
-    icon: '🧭',
-    description: 'Técnicas de navegação e instrumentos de voo.'
+    description: 'Técnicas de navegação e instrumentos de voo.',
   },
   {
     id: 4,
     title: 'Meteorologia Aeronáutica',
-    icon: '🌤️',
-    description: 'Condições meteorológicas e sua influência no voo.'
+    description: 'Condições meteorológicas e sua influência no voo.',
   },
   {
     id: 5,
     title: 'Regulamentação Aeronáutica',
-    icon: '📋',
-    description: 'Normas e regulamentos da aviação civil.'
+    description: 'Normas e regulamentos da aviação civil.',
   },
   {
     id: 6,
     title: 'Manutenção de Aeronaves',
-    icon: '🔧',
-    description: 'Procedimentos de manutenção e inspeção.'
-  }
+    description: 'Procedimentos de manutenção e inspeção.',
+  },
 ];
 
 const ModuleList = ({ onSelectModule }) => {
@@ -47,7 +42,9 @@ const ModuleList = ({ onSelectModule }) => {
       <div className="module-list-grid">
         {modules.map((mod) => (
           <div className="module-card" key={mod.id}>
-            <div className="module-icon">{mod.icon}</div>
+            <div className="module-icon">
+              <ModuleIcon id={mod.id} size={28} />
+            </div>
             <h3>{mod.title}</h3>
             <p>{mod.description}</p>
             <button className="module-btn" onClick={() => onSelectModule(mod.id)}>

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { ClipboardCheck, ArrowLeft } from 'lucide-react';
+import { ModuleIcon } from './ui/ModuleIcon';
 import './ModulePage.css';
 import LessonQuiz from './LessonQuiz';
 
 const moduleContents = {
   1: {
     title: 'Fundamentos da Aeronáutica',
-    icon: '🛩️',
     lessons: [
       {
         title: 'História da Aviação',
@@ -27,7 +28,6 @@ const moduleContents = {
   },
   2: {
     title: 'Sistemas de Aeronaves',
-    icon: '⚙️',
     lessons: [
       {
         title: 'Sistema de Propulsão',
@@ -49,7 +49,6 @@ const moduleContents = {
   },
   3: {
     title: 'Navegação Aérea',
-    icon: '🧭',
     lessons: [
       {
         title: 'Navegação Visual',
@@ -71,7 +70,6 @@ const moduleContents = {
   },
   4: {
     title: 'Meteorologia Aeronáutica',
-    icon: '🌤️',
     lessons: [
       {
         title: 'Atmosfera Terrestre',
@@ -93,7 +91,6 @@ const moduleContents = {
   },
   5: {
     title: 'Regulamentação Aeronáutica',
-    icon: '📋',
     lessons: [
       {
         title: 'Órgãos Reguladores',
@@ -115,7 +112,6 @@ const moduleContents = {
   },
   6: {
     title: 'Manutenção de Aeronaves',
-    icon: '🔧',
     lessons: [
       {
         title: 'Tipos de Manutenção',
@@ -175,9 +171,13 @@ const ModulePage = ({ moduleId, onBack }) => {
 
   return (
     <section className="module-page-section">
-      <button className="back-btn" onClick={onBack}>← Voltar para módulos</button>
+      <button type="button" className="back-btn" onClick={onBack}>
+        <ArrowLeft size={18} aria-hidden /> Voltar para módulos
+      </button>
       <div className="module-page-content">
-        <div className="module-page-icon">{mod.icon}</div>
+        <div className="module-page-icon">
+          <ModuleIcon id={moduleId} size={52} />
+        </div>
         <h2>{mod.title}</h2>
         <div className="mini-course-nav">
           {mod.lessons.map((lesson, idx) => (
@@ -201,11 +201,9 @@ const ModulePage = ({ moduleId, onBack }) => {
             <div className="mini-course-lesson">
               <h3>{mod.lessons[currentLesson].title}</h3>
               <p>{mod.lessons[currentLesson].content}</p>
-              <button 
-                className="quiz-btn"
-                onClick={() => setShowQuiz(true)}
-              >
-                🎯 Fazer Quiz desta Lição
+              <button type="button" className="quiz-btn" onClick={() => setShowQuiz(true)}>
+                <ClipboardCheck size={18} strokeWidth={2} aria-hidden />
+                Fazer quiz desta lição
               </button>
             </div>
             <div className="mini-course-controls">
@@ -232,10 +230,11 @@ const ModulePage = ({ moduleId, onBack }) => {
         ) : (
           <div className="quiz-container">
             <button 
+              type="button"
               className="back-to-lesson-btn"
               onClick={() => setShowQuiz(false)}
             >
-              ← Voltar à Lição
+              <ArrowLeft size={18} aria-hidden /> Voltar à lição
             </button>
             <LessonQuiz 
               moduleId={moduleId}

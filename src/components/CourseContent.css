@@ -45,12 +45,12 @@
 .module-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  border-color: #667eea;
+  border-color: var(--ac-teal);
 }
 
 .module-card.expanded {
-  border-color: #667eea;
-  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+  border-color: var(--ac-teal);
+  box-shadow: 0 8px 30px rgba(13, 148, 136, 0.18);
 }
 
 .module-header {
@@ -61,8 +61,11 @@
 }
 
 .module-icon {
-  font-size: 2.5rem;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ac-teal-deep);
 }
 
 .module-info {
@@ -101,8 +104,8 @@
 }
 
 .level {
-  background: #f3e5f5;
-  color: #7b1fa2;
+  background: #ecfdf5;
+  color: var(--ac-teal-deep);
 }
 
 .module-details {
@@ -133,7 +136,7 @@
 }
 
 .lesson-number {
-  background: #667eea;
+  background: var(--ac-teal);
   color: white;
   width: 25px;
   height: 25px;
@@ -147,7 +150,7 @@
 }
 
 .start-module-btn {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--ac-teal) 0%, var(--ac-slate) 100%);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -160,7 +163,7 @@
 
 .start-module-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 18px rgba(13, 148, 136, 0.35);
 }
 
 @keyframes slideDown {

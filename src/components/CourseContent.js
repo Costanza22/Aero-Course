@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Check } from 'lucide-react';
+import { ModuleIcon } from './ui/ModuleIcon';
 import './CourseContent.css';
 
 const PROGRESS_KEY = 'aerocourse_progress';
@@ -18,7 +20,6 @@ const CourseContent = ({ onSelectModule }) => {
     {
       id: 1,
       title: "Fundamentos da Aeronáutica",
-      icon: "🛩️",
       description: "Princípios básicos de voo e aerodinâmica",
       lessons: [
         "História da Aviação",
@@ -32,7 +33,6 @@ const CourseContent = ({ onSelectModule }) => {
     {
       id: 2,
       title: "Sistemas de Aeronaves",
-      icon: "⚙️",
       description: "Componentes e sistemas essenciais das aeronaves",
       lessons: [
         "Sistema de Propulsão",
@@ -46,7 +46,6 @@ const CourseContent = ({ onSelectModule }) => {
     {
       id: 3,
       title: "Navegação Aérea",
-      icon: "🧭",
       description: "Técnicas de navegação e instrumentos de voo",
       lessons: [
         "Navegação Visual",
@@ -60,7 +59,6 @@ const CourseContent = ({ onSelectModule }) => {
     {
       id: 4,
       title: "Meteorologia Aeronáutica",
-      icon: "🌤️",
       description: "Condições meteorológicas e sua influência no voo",
       lessons: [
         "Atmosfera Terrestre",
@@ -74,7 +72,6 @@ const CourseContent = ({ onSelectModule }) => {
     {
       id: 5,
       title: "Regulamentação Aeronáutica",
-      icon: "📋",
       description: "Normas e regulamentos da aviação civil",
       lessons: [
         "Órgãos Reguladores",
@@ -88,7 +85,6 @@ const CourseContent = ({ onSelectModule }) => {
     {
       id: 6,
       title: "Manutenção de Aeronaves",
-      icon: "🔧",
       description: "Procedimentos de manutenção e inspeção",
       lessons: [
         "Tipos de Manutenção",
@@ -132,7 +128,9 @@ const CourseContent = ({ onSelectModule }) => {
               onClick={() => setSelectedModule(selectedModule === module.id ? null : module.id)}
             >
               <div className="module-header">
-                <div className="module-icon">{module.icon}</div>
+                <div className="module-icon">
+                  <ModuleIcon id={module.id} size={32} />
+                </div>
                 <div className="module-info">
                   <h3>{module.title}</h3>
                   <p>{module.description}</p>
@@ -158,7 +156,13 @@ const CourseContent = ({ onSelectModule }) => {
                       Iniciar Módulo
                     </button>
                     <button className={`complete-module-btn${completed.includes(module.id) ? ' completed' : ''}`} onClick={e => { e.stopPropagation(); toggleComplete(module.id); }}>
-                      {completed.includes(module.id) ? 'Concluído ✔️' : 'Marcar como concluído'}
+                      {completed.includes(module.id) ? (
+                        <>
+                          <Check size={14} strokeWidth={3} aria-hidden /> Concluído
+                        </>
+                      ) : (
+                        'Marcar como concluído'
+                      )}
                     </button>
                   </div>
                 </div>

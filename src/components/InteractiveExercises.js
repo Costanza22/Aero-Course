@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BookOpen, CheckCircle2, XCircle, Wrench, Search, HelpCircle, Check } from 'lucide-react';
 import './InteractiveExercises.css';
 
 const InteractiveExercises = () => {
@@ -277,7 +278,9 @@ const InteractiveExercises = () => {
       const solution = exercise.solution(exercise.content);
       return (
         <div className="exercise-solution">
-          <h4>✅ Solução:</h4>
+          <h4 className="solution-heading">
+            <Check size={18} aria-hidden /> Solução:
+          </h4>
           {Object.entries(solution).map(([key, value]) => (
             <div key={key} className="solution-item">
               <strong>{key}:</strong> {value}
@@ -294,7 +297,10 @@ const InteractiveExercises = () => {
   return (
     <div className="interactive-exercises">
       <div className="exercises-header">
-        <h2>🔧 Exercícios Práticos Interativos</h2>
+        <h2 className="exercises-page-title">
+          <Wrench size={26} strokeWidth={2} aria-hidden />
+          Exercícios práticos interativos
+        </h2>
         <p>Aplique seus conhecimentos em exercícios práticos de aeronáutica</p>
       </div>
 
@@ -324,23 +330,32 @@ const InteractiveExercises = () => {
         </div>
 
         <div className="exercise-question">
-          <h4>❓ Pergunta:</h4>
+          <h4 className="exercise-question-label">
+            <HelpCircle size={18} strokeWidth={2} aria-hidden />
+            Pergunta
+          </h4>
           <p>{currentExerciseData.question}</p>
         </div>
 
         <div className="exercise-controls">
-          <button
-            className="check-answer-btn"
-            onClick={() => setShowResults(true)}
-          >
-            🔍 Verificar Resposta
+          <button type="button" className="check-answer-btn" onClick={() => setShowResults(true)}>
+            <Search size={18} strokeWidth={2} aria-hidden />
+            Verificar resposta
           </button>
         </div>
 
         {showResults && (
           <div className="exercise-results">
             <div className={`result-message ${checkAnswer(currentExerciseData) ? 'correct' : 'incorrect'}`}>
-              {checkAnswer(currentExerciseData) ? '✅ Correto!' : '❌ Incorreto. Tente novamente!'}
+              {checkAnswer(currentExerciseData) ? (
+                <>
+                  <CheckCircle2 size={18} strokeWidth={2} aria-hidden /> Correto.
+                </>
+              ) : (
+                <>
+                  <XCircle size={18} strokeWidth={2} aria-hidden /> Incorreto. Tente novamente.
+                </>
+              )}
             </div>
             {getSolution(currentExerciseData)}
           </div>
@@ -348,7 +363,10 @@ const InteractiveExercises = () => {
       </div>
 
       <div className="exercises-info">
-        <h4>📚 Sobre os Exercícios</h4>
+        <h4 className="exercises-info-title">
+          <BookOpen size={18} strokeWidth={2} aria-hidden />
+          Sobre os exercícios
+        </h4>
         <ul>
           <li><strong>Cálculos:</strong> Aprenda a calcular peso, balanceamento e performance</li>
           <li><strong>Identificação:</strong> Familiarize-se com os componentes das aeronaves</li>

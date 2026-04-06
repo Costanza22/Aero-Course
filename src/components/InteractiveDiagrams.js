@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import './InteractiveDiagrams.css';
+import {
+  BarChart3,
+  Wrench,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  Target,
+  Smartphone,
+  RefreshCw,
+} from 'lucide-react';
 
 const InteractiveDiagrams = () => {
   const [selectedDiagram, setSelectedDiagram] = useState(0);
@@ -248,7 +258,10 @@ const InteractiveDiagrams = () => {
   return (
     <div className="interactive-diagrams">
       <div className="diagrams-header">
-        <h2>📊 Infográficos Interativos</h2>
+        <h2 className="diagrams-header-title">
+          <BarChart3 size={28} strokeWidth={1.75} aria-hidden />
+          Infográficos interativos
+        </h2>
         <p>Explore sistemas de aeronaves através de diagramas clicáveis</p>
       </div>
 
@@ -262,7 +275,9 @@ const InteractiveDiagrams = () => {
                 className={`diagram-tab ${index === selectedDiagram ? 'active' : ''}`}
                 onClick={() => setSelectedDiagram(index)}
               >
-                <span className="tab-icon">🔧</span>
+                <span className="tab-icon">
+                  <Wrench size={18} strokeWidth={1.75} aria-hidden />
+                </span>
                 <span className="tab-title">{diagram.title}</span>
               </button>
             ))}
@@ -321,14 +336,14 @@ const InteractiveDiagrams = () => {
           </div>
 
           <div className="diagram-controls">
-            <button className="control-btn" onClick={() => setSelectedDiagram(prev => (prev - 1 + diagrams.length) % diagrams.length)}>
-              ⬅️ Anterior
+            <button type="button" className="control-btn" onClick={() => setSelectedDiagram(prev => (prev - 1 + diagrams.length) % diagrams.length)}>
+              <ChevronLeft size={20} aria-hidden /> Anterior
             </button>
             <span className="diagram-counter">
               {selectedDiagram + 1} de {diagrams.length}
             </span>
-            <button className="control-btn" onClick={() => setSelectedDiagram(prev => (prev + 1) % diagrams.length)}>
-              Próximo ➡️
+            <button type="button" className="control-btn" onClick={() => setSelectedDiagram(prev => (prev + 1) % diagrams.length)}>
+              Próximo <ChevronRight size={20} aria-hidden />
             </button>
           </div>
         </div>
@@ -340,7 +355,9 @@ const InteractiveDiagrams = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h3>{selectedPart.name}</h3>
-              <button className="close-btn" onClick={closeDetails}>✕</button>
+              <button type="button" className="close-btn" onClick={closeDetails} aria-label="Fechar">
+                <X size={22} />
+              </button>
             </div>
             
             <div className="modal-body">
@@ -377,17 +394,23 @@ const InteractiveDiagrams = () => {
 
       <div className="diagrams-features">
         <div className="feature-card">
-          <h4>🎯 Clique para Explorar</h4>
+          <h4 className="diagram-feature-title">
+            <Target size={18} aria-hidden /> Clique para explorar
+          </h4>
           <p>Clique nos marcadores para obter informações detalhadas sobre cada componente</p>
         </div>
         
         <div className="feature-card">
-          <h4>📱 Responsivo</h4>
+          <h4 className="diagram-feature-title">
+            <Smartphone size={18} aria-hidden /> Responsivo
+          </h4>
           <p>Diagramas otimizados para visualização em dispositivos móveis</p>
         </div>
         
         <div className="feature-card">
-          <h4>🔄 Atualização em Tempo Real</h4>
+          <h4 className="diagram-feature-title">
+            <RefreshCw size={18} aria-hidden /> Atualização em tempo real
+          </h4>
           <p>Status dos sistemas atualizado em tempo real durante o voo</p>
         </div>
       </div>

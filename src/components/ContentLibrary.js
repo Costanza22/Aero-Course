@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './ContentLibrary.css';
+import { IconByName } from '@/components/ui/IconByName';
+import { Check, Info, X } from 'lucide-react';
 
 const ContentLibrary = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -31,7 +33,7 @@ const ContentLibrary = () => {
       date: '2009-01-15',
       author: 'Capitão Chesley Sullenberger',
       tags: ['emergência', 'pouso', 'falha de motor', 'decisão'],
-      image: '🛬'
+      imageKey: 'planeLanding'
     },
     {
       id: 2,
@@ -58,7 +60,7 @@ const ContentLibrary = () => {
       date: '2009-06-01',
       author: 'BEA (Bureau d\'Enquêtes et d\'Analyses)',
       tags: ['turbulência', 'instrumentos', 'treinamento', 'segurança'],
-      image: '🌊'
+      imageKey: 'waves'
     },
 
     // Histórias de Pilotos
@@ -85,7 +87,7 @@ const ContentLibrary = () => {
       date: '1897-07-24',
       author: 'Amelia Earhart',
       tags: ['pioneira', 'mulheres', 'história', 'inspiração'],
-      image: '✈️'
+      imageKey: 'plane'
     },
     {
       id: 4,
@@ -111,7 +113,7 @@ const ContentLibrary = () => {
       date: '1873-07-20',
       author: 'Alberto Santos Dumont',
       tags: ['brasil', 'pioneiro', 'invenção', 'história'],
-      image: '🇧🇷'
+      imageKey: 'award'
     },
 
     // Notícias da Aviação
@@ -139,7 +141,7 @@ const ContentLibrary = () => {
       date: '2024-01-15',
       author: 'Revista Aviation Today',
       tags: ['sustentabilidade', 'tecnologia', 'meio ambiente', 'inovação'],
-      image: '🌱'
+      imageKey: 'sprout'
     },
     {
       id: 6,
@@ -163,7 +165,7 @@ const ContentLibrary = () => {
       date: '2024-01-10',
       author: 'ANAC - Agência Nacional de Aviação Civil',
       tags: ['regulamentação', 'segurança', 'anac', 'brasil'],
-      image: '📋'
+      imageKey: 'clipboardList'
     },
 
     // Eventos Aeronáuticos
@@ -191,7 +193,7 @@ const ContentLibrary = () => {
       date: '2024-07-22',
       author: 'EAA - Experimental Aircraft Association',
       tags: ['feira', 'experimental', 'networking', 'demonstrações'],
-      image: '🎪'
+      imageKey: 'partyPopper'
     },
     {
       id: 8,
@@ -217,16 +219,16 @@ const ContentLibrary = () => {
       date: '2024-04-02',
       author: 'FIDAE - Feira Internacional del Aire y del Espacio',
       tags: ['feira', 'latino-america', 'tecnologia', 'defesa'],
-      image: '🇨🇱'
+      imageKey: 'globe'
     }
   ];
 
   const categories = [
-    { id: 'all', name: 'Todos', icon: '📚' },
-    { id: 'casos-reais', name: 'Casos Reais', icon: '📋' },
-    { id: 'historias-pilotos', name: 'Histórias de Pilotos', icon: '👨‍✈️' },
-    { id: 'noticias', name: 'Notícias', icon: '📰' },
-    { id: 'eventos', name: 'Eventos', icon: '📅' }
+    { id: 'all', name: 'Todos', icon: 'library' },
+    { id: 'casos-reais', name: 'Casos Reais', icon: 'clipboardList' },
+    { id: 'historias-pilotos', name: 'Histórias de Pilotos', icon: 'user' },
+    { id: 'noticias', name: 'Notícias', icon: 'newspaper' },
+    { id: 'eventos', name: 'Eventos', icon: 'calendar' }
   ];
 
   const filteredContent = contentItems.filter(item => {
@@ -250,7 +252,10 @@ const ContentLibrary = () => {
   return (
     <div className="content-library">
       <div className="library-header">
-        <h2>📚 Biblioteca de Conteúdo</h2>
+        <h2 className="library-header-title">
+          <IconByName name="library" size={28} strokeWidth={1.75} />
+          Biblioteca de Conteúdo
+        </h2>
         <p>Explore casos reais, histórias inspiradoras e as últimas notícias da aviação</p>
       </div>
 
@@ -258,7 +263,7 @@ const ContentLibrary = () => {
         <div className="search-box">
           <input
             type="text"
-            placeholder="🔍 Buscar conteúdo..."
+            placeholder="Buscar conteúdo..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
@@ -272,7 +277,9 @@ const ContentLibrary = () => {
               className={`category-btn ${selectedCategory === category.id ? 'active' : ''}`}
               onClick={() => setSelectedCategory(category.id)}
             >
-              <span className="category-icon">{category.icon}</span>
+              <span className="category-icon">
+                <IconByName name={category.icon} size={18} strokeWidth={1.75} />
+              </span>
               <span className="category-name">{category.name}</span>
             </button>
           ))}
@@ -283,7 +290,9 @@ const ContentLibrary = () => {
         {filteredContent.map(item => (
           <div key={item.id} className="content-card" onClick={() => openContent(item)}>
             <div className="content-header">
-              <div className="content-icon">{item.image}</div>
+              <div className="content-icon">
+                <IconByName name={item.imageKey} size={32} strokeWidth={1.75} />
+              </div>
               <div className="content-type">{item.type}</div>
             </div>
             
@@ -312,7 +321,9 @@ const ContentLibrary = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h2>{selectedItem.title}</h2>
-              <button className="close-btn" onClick={closeContent}>×</button>
+              <button type="button" className="close-btn" onClick={closeContent} aria-label="Fechar">
+                <X size={22} />
+              </button>
             </div>
             
             <div className="modal-body">
@@ -338,13 +349,16 @@ const ContentLibrary = () => {
       )}
 
       <div className="library-info">
-        <h4>ℹ️ Sobre a Biblioteca</h4>
+        <h4 className="library-info-heading">
+          <Info size={18} aria-hidden />
+          Sobre a Biblioteca
+        </h4>
         <ul>
-          <li>✅ Conteúdo atualizado regularmente</li>
-          <li>✅ Casos reais com lições aprendidas</li>
-          <li>✅ Histórias inspiradoras de pilotos</li>
-          <li>✅ Notícias da indústria aeronáutica</li>
-          <li>✅ Calendário de eventos importantes</li>
+          <li><Check size={16} className="library-info-check" aria-hidden /> Conteúdo atualizado regularmente</li>
+          <li><Check size={16} className="library-info-check" aria-hidden /> Casos reais com lições aprendidas</li>
+          <li><Check size={16} className="library-info-check" aria-hidden /> Histórias inspiradoras de pilotos</li>
+          <li><Check size={16} className="library-info-check" aria-hidden /> Notícias da indústria aeronáutica</li>
+          <li><Check size={16} className="library-info-check" aria-hidden /> Calendário de eventos importantes</li>
         </ul>
       </div>
     </div>
