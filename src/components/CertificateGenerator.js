@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Plane, Loader2, FileDown, FileText, ClipboardList, Check } from 'lucide-react';
 import './CertificateGenerator.css';
 
 const CertificateGenerator = ({ user, completionDate, grade }) => {
@@ -110,9 +111,8 @@ const CertificateGenerator = ({ user, completionDate, grade }) => {
         <body>
           <div class="certificate">
             <div class="header">
-              <div class="logo">✈️</div>
               <div class="title">AeroCourse</div>
-              <div class="subtitle">Plataforma de Ensino em Aeronáutica</div>
+              <div class="subtitle">Plataforma de ensino em aeronáutica</div>
             </div>
             
             <div class="content">
@@ -212,7 +212,9 @@ Certificado Nº: AC-${Date.now().toString().slice(-8)}
     <div className="certificate-generator">
       <div className="certificate-preview">
         <div className="certificate-header">
-          <div className="certificate-logo">✈️</div>
+          <div className="certificate-logo">
+            <Plane size={40} strokeWidth={1.75} aria-hidden />
+          </div>
           <h2>AeroCourse</h2>
           <p>Plataforma de Ensino em Aeronáutica</p>
         </div>
@@ -256,24 +258,45 @@ Certificado Nº: AC-${Date.now().toString().slice(-8)}
           onClick={generatePDF}
           disabled={isGenerating}
         >
-          {isGenerating ? '🔄 Gerando...' : '📄 Baixar PDF'}
+          {isGenerating ? (
+            <>
+              <Loader2 size={18} className="cert-btn-spin" aria-hidden /> Gerando…
+            </>
+          ) : (
+            <>
+              <FileDown size={18} aria-hidden /> Baixar PDF
+            </>
+          )}
         </button>
         <button 
           className="download-text-btn"
           onClick={downloadAsText}
         >
-          📝 Baixar Texto
+          <FileText size={18} aria-hidden /> Baixar texto
         </button>
       </div>
       
       <div className="certificate-info">
-        <h4>📋 Informações do Certificado</h4>
+        <h4 className="certificate-info-title">
+          <ClipboardList size={18} aria-hidden />
+          Informações do certificado
+        </h4>
         <ul>
-          <li>✅ Certificado oficial da AeroCourse</li>
-          <li>✅ Assinado pela instrutora Costanza Pasquotto Assef</li>
-          <li>✅ Número único de identificação</li>
-          <li>✅ Data de conclusão registrada</li>
-          <li>✅ Nota final (se aplicável)</li>
+          <li>
+            <Check size={14} strokeWidth={3} aria-hidden /> Certificado oficial da AeroCourse
+          </li>
+          <li>
+            <Check size={14} strokeWidth={3} aria-hidden /> Assinado pela instrutora Costanza Pasquotto Assef
+          </li>
+          <li>
+            <Check size={14} strokeWidth={3} aria-hidden /> Número único de identificação
+          </li>
+          <li>
+            <Check size={14} strokeWidth={3} aria-hidden /> Data de conclusão registrada
+          </li>
+          <li>
+            <Check size={14} strokeWidth={3} aria-hidden /> Nota final (se aplicável)
+          </li>
         </ul>
       </div>
     </div>

@@ -9,11 +9,26 @@
   margin-bottom: 3rem;
 }
 
-.grade-header h2 {
+.grade-heading-with-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   color: #2a5298;
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   font-weight: 700;
+}
+
+.grade-subheading-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.grade-legend-title {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
 }
 
 .grade-header p {
@@ -36,6 +51,8 @@
   margin-bottom: 2rem;
   font-size: 1.8rem;
   font-weight: 600;
+  justify-content: center;
+  width: 100%;
 }
 
 .grade-summary {
@@ -107,6 +124,8 @@
   margin-bottom: 2rem;
   font-size: 1.8rem;
   font-weight: 600;
+  justify-content: center;
+  width: 100%;
 }
 
 .modules-grid {
@@ -143,7 +162,10 @@
 }
 
 .module-icon {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a5298;
 }
 
 .module-grade-header h4 {
@@ -196,6 +218,9 @@
   margin-bottom: 2rem;
   font-size: 1.8rem;
   font-weight: 600;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
 }
 
 .lessons-list {

@@ -9,10 +9,42 @@
   margin-bottom: 3rem;
 }
 
-.dashboard-header h2 {
+.dashboard-header h2,
+.dashboard-title-with-icon {
   font-size: 2.5rem;
   color: #2a5298;
   margin-bottom: 1rem;
+}
+
+.dashboard-title-with-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-title-with-icon svg {
+  flex-shrink: 0;
+  color: #2a5298;
+}
+
+.chart-container-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.chart-container-title svg {
+  flex-shrink: 0;
+  color: #2a5298;
+}
+
+.module-stat-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .dashboard-header p {
@@ -76,11 +108,15 @@
 }
 
 .stat-icon {
-  font-size: 3rem;
-  background: linear-gradient(45deg, #ffd700, #2a5298);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #2a5298;
+}
+
+.stat-icon svg {
+  color: #2a5298;
 }
 
 .stat-number {
@@ -315,8 +351,19 @@
 }
 
 .achievement-icon {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  color: inherit;
+}
+
+.achievement.unlocked .achievement-icon svg {
+  color: #fff;
+}
+
+.achievement.locked .achievement-icon svg {
+  color: #94a3b8;
 }
 
 .achievement-info h4 {

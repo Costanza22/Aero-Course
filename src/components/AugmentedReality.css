@@ -7,10 +7,26 @@
   margin-bottom: 2rem;
 }
 
-.ar-header h2 {
+.ar-header h2,
+.ar-title-with-icon {
   font-size: 2rem;
   color: #2a5298;
   margin-bottom: 0.5rem;
+}
+
+.ar-title-with-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ar-placeholder-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
 }
 
 .ar-header p {
@@ -80,6 +96,10 @@
 }
 
 .ar-activate-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   background: linear-gradient(45deg, #ffd700, #2a5298);
   color: white;
   border: none;
@@ -129,6 +149,10 @@
 }
 
 .control-group button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
   background: rgba(255, 255, 255, 0.2);
   border: none;
   color: white;
@@ -145,10 +169,14 @@
 }
 
 .reset-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   background: linear-gradient(45deg, #ffd700, #2a5298);
   color: white;
   border: none;
-  padding: 0.8rem;
+  padding: 0.8rem 1rem;
   border-radius: 25px;
   cursor: pointer;
   font-weight: 600;
@@ -209,7 +237,15 @@
 }
 
 .component-icon {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #2a5298;
+}
+
+.component-item.active .component-icon {
+  color: #fff;
 }
 
 .component-info h4 {
@@ -320,10 +356,19 @@
   text-align: center;
 }
 
-.feature-card h4 {
+.feature-card h4,
+.ar-feature-title {
   color: #2a5298;
   margin: 0 0 1rem 0;
   font-size: 1.1rem;
+}
+
+.ar-feature-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
 }
 
 .feature-card p {

@@ -1,5 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './PodcastPlayer.css';
+import {
+  Headphones,
+  Mic,
+  Clock,
+  Folder,
+  Star,
+  Rewind,
+  Play,
+  Pause,
+  FastForward,
+  Volume2,
+  Zap,
+  FileText,
+  Smartphone,
+  Target,
+} from 'lucide-react';
 
 const PodcastPlayer = () => {
   const [currentEpisode, setCurrentEpisode] = useState(0);
@@ -184,7 +200,10 @@ const PodcastPlayer = () => {
   return (
     <div className="podcast-player">
       <div className="podcast-header">
-        <h2>🎧 Podcasts Aeronáuticos</h2>
+        <h2 className="podcast-header-title">
+          <Headphones size={28} strokeWidth={1.75} aria-hidden />
+          Podcasts aeronáuticos
+        </h2>
         <p>Conteúdo em áudio para estudo offline e aprofundamento</p>
       </div>
 
@@ -192,7 +211,9 @@ const PodcastPlayer = () => {
         <div className="player-section">
           <div className="current-episode">
             <div className="episode-cover">
-              <div className="cover-placeholder">🎙️</div>
+              <div className="cover-placeholder">
+                <Mic size={48} strokeWidth={1.5} aria-hidden />
+              </div>
             </div>
             
             <div className="episode-info">
@@ -201,9 +222,15 @@ const PodcastPlayer = () => {
               <p className="episode-description">{currentPodcast.description}</p>
               
               <div className="episode-meta">
-                <span>⏱️ {currentPodcast.duration}</span>
-                <span>📂 {currentPodcast.category}</span>
-                <span>⭐ {currentPodcast.rating}</span>
+                <span className="episode-meta-item">
+                  <Clock size={16} aria-hidden /> {currentPodcast.duration}
+                </span>
+                <span className="episode-meta-item">
+                  <Folder size={16} aria-hidden /> {currentPodcast.category}
+                </span>
+                <span className="episode-meta-item">
+                  <Star size={16} aria-hidden /> {currentPodcast.rating}
+                </span>
               </div>
 
               <div className="episode-topics">
@@ -218,16 +245,16 @@ const PodcastPlayer = () => {
             <audio ref={audioRef} src={currentPodcast.audioUrl} />
             
             <div className="player-controls">
-              <button className="control-btn" onClick={() => skipTime(-10)}>
-                ⏪ 10s
+              <button type="button" className="control-btn" onClick={() => skipTime(-10)}>
+                <Rewind size={20} aria-hidden /> 10s
               </button>
               
-              <button className="play-btn" onClick={togglePlay}>
-                {isPlaying ? '⏸️' : '▶️'}
+              <button type="button" className="play-btn" onClick={togglePlay} aria-label={isPlaying ? 'Pausar' : 'Reproduzir'}>
+                {isPlaying ? <Pause size={28} /> : <Play size={28} />}
               </button>
               
-              <button className="control-btn" onClick={() => skipTime(30)}>
-                30s ⏩
+              <button type="button" className="control-btn" onClick={() => skipTime(30)}>
+                30s <FastForward size={20} aria-hidden />
               </button>
             </div>
 
@@ -247,7 +274,9 @@ const PodcastPlayer = () => {
 
             <div className="player-settings">
               <div className="volume-control">
-                <span>🔊</span>
+                <span className="volume-icon-wrap" aria-hidden>
+                  <Volume2 size={20} />
+                </span>
                 <input
                   type="range"
                   min="0"
@@ -260,7 +289,9 @@ const PodcastPlayer = () => {
               </div>
 
               <div className="speed-control">
-                <span>⚡</span>
+                <span className="speed-icon-wrap" aria-hidden>
+                  <Zap size={20} />
+                </span>
                 <div className="speed-buttons">
                   {[0.5, 0.75, 1, 1.25, 1.5, 2].map(rate => (
                     <button
@@ -278,10 +309,12 @@ const PodcastPlayer = () => {
 
           <div className="transcript-section">
             <button 
+              type="button"
               className="transcript-toggle"
               onClick={() => setShowTranscript(!showTranscript)}
             >
-              📝 {showTranscript ? 'Ocultar' : 'Mostrar'} Transcrição
+              <FileText size={18} aria-hidden />
+              {showTranscript ? 'Ocultar' : 'Mostrar'} transcrição
             </button>
             
             {showTranscript && (
@@ -306,7 +339,9 @@ const PodcastPlayer = () => {
                 className={`episode-card ${index === currentEpisode ? 'active' : ''}`}
                 onClick={() => changeEpisode(index)}
               >
-                <div className="episode-icon">🎙️</div>
+                <div className="episode-icon">
+                  <Mic size={22} strokeWidth={1.75} aria-hidden />
+                </div>
                 <div className="episode-details">
                   <h4>{podcast.title}</h4>
                   <p className="episode-host-small">{podcast.host}</p>
@@ -315,7 +350,9 @@ const PodcastPlayer = () => {
                     <span>{podcast.category}</span>
                   </div>
                 </div>
-                <div className="episode-rating">⭐ {podcast.rating}</div>
+                <div className="episode-rating">
+                  <Star size={14} aria-hidden /> {podcast.rating}
+                </div>
               </div>
             ))}
           </div>
@@ -324,17 +361,23 @@ const PodcastPlayer = () => {
 
       <div className="podcast-features">
         <div className="feature-card">
-          <h4>📱 Download Offline</h4>
+          <h4 className="podcast-feature-title">
+            <Smartphone size={18} aria-hidden /> Download offline
+          </h4>
           <p>Baixe episódios para ouvir sem conexão com a internet</p>
         </div>
         
         <div className="feature-card">
-          <h4>🎯 Velocidade Ajustável</h4>
+          <h4 className="podcast-feature-title">
+            <Target size={18} aria-hidden /> Velocidade ajustável
+          </h4>
           <p>Controle a velocidade de reprodução para seu ritmo de estudo</p>
         </div>
         
         <div className="feature-card">
-          <h4>📝 Transcrições</h4>
+          <h4 className="podcast-feature-title">
+            <FileText size={18} aria-hidden /> Transcrições
+          </h4>
           <p>Acesse transcrições completas para revisão e estudo</p>
         </div>
       </div>

@@ -1,7 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import {
+  Bell,
+  Check,
+  Trash2,
+  Clock,
+  TrendingUp,
+  Settings,
+  Sparkles,
+  Trophy,
+  Megaphone,
+  X,
+} from 'lucide-react';
 import './NotificationSystem.css';
 
-const NotificationSystem = ({ user }) => {
+function NotificationTypeIcon({ type }) {
+  const p = { size: 18, strokeWidth: 2 };
+  switch (type) {
+    case 'reminder':
+      return <Clock {...p} aria-hidden />;
+    case 'progress':
+      return <TrendingUp {...p} aria-hidden />;
+    case 'system':
+      return <Settings {...p} aria-hidden />;
+    case 'new_module':
+      return <Sparkles {...p} aria-hidden />;
+    case 'achievement':
+      return <Trophy {...p} aria-hidden />;
+    default:
+      return <Megaphone {...p} aria-hidden />;
+  }
+}
+
+const NotificationSystem = ({ user, className = '' }) => {
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
   const [permission, setPermission] = useState('default');
@@ -113,24 +143,13 @@ const NotificationSystem = ({ user }) => {
     setNotifications([]);
   };
 
-  const getNotificationIcon = (type) => {
-    switch (type) {
-      case 'reminder': return '⏰';
-      case 'progress': return '📈';
-      case 'system': return '⚙️';
-      case 'new_module': return '🆕';
-      case 'achievement': return '🏆';
-      default: return '📢';
-    }
-  };
-
   const getNotificationColor = (type) => {
     switch (type) {
       case 'reminder': return '#ffd700';
       case 'progress': return '#4ade80';
       case 'system': return '#2a5298';
       case 'new_module': return '#f97316';
-      case 'achievement': return '#a855f7';
+      case 'achievement': return '#0d9488';
       default: return '#6b7280';
     }
   };
@@ -138,13 +157,15 @@ const NotificationSystem = ({ user }) => {
   const unreadCount = notifications.filter(n => !n.read).length;
 
   return (
-    <div className="notification-system">
+    <div className={`notification-system ${className}`.trim()}>
       <div className="notification-toggle">
-        <button 
+        <button
+          type="button"
           className="notification-btn"
           onClick={() => setShowNotifications(!showNotifications)}
+          aria-label="Notificações"
         >
-          🔔
+          <Bell size={20} strokeWidth={2} aria-hidden />
           {unreadCount > 0 && (
             <span className="notification-badge">{unreadCount}</span>
           )}
@@ -156,19 +177,21 @@ const NotificationSystem = ({ user }) => {
           <div className="notification-header">
             <h3>Notificações</h3>
             <div className="notification-actions">
-              <button 
+              <button
+                type="button"
                 className="action-btn"
                 onClick={markAllAsRead}
                 title="Marcar todas como lidas"
               >
-                ✓
+                <Check size={16} strokeWidth={2.5} aria-hidden />
               </button>
-              <button 
+              <button
+                type="button"
                 className="action-btn"
                 onClick={clearAllNotifications}
                 title="Limpar todas"
               >
-                🗑️
+                <Trash2 size={16} strokeWidth={2} aria-hidden />
               </button>
             </div>
           </div>
@@ -197,11 +220,11 @@ const NotificationSystem = ({ user }) => {
                   className={`notification-item ${notification.read ? 'read' : 'unread'}`}
                   onClick={() => markAsRead(notification.id)}
                 >
-                  <div 
+                  <div
                     className="notification-icon"
                     style={{ backgroundColor: getNotificationColor(notification.type) }}
                   >
-                    {getNotificationIcon(notification.type)}
+                    <NotificationTypeIcon type={notification.type} />
                   </div>
                   <div className="notification-content">
                     <div className="notification-title">{notification.title}</div>
@@ -211,13 +234,15 @@ const NotificationSystem = ({ user }) => {
                     </div>
                   </div>
                   <button 
+                    type="button"
                     className="delete-notification"
                     onClick={(e) => {
                       e.stopPropagation();
                       deleteNotification(notification.id);
                     }}
+                    aria-label="Remover notificação"
                   >
-                    ×
+                    <X size={18} />
                   </button>
                 </div>
               ))

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './AnalyticsDashboard.css';
+import { IconByName } from '@/components/ui/IconByName';
+import { FileText, Check } from 'lucide-react';
 
 const AnalyticsDashboard = ({ user }) => {
   const [selectedPeriod, setSelectedPeriod] = useState('week');
@@ -157,7 +159,10 @@ const AnalyticsDashboard = ({ user }) => {
   return (
     <div className="analytics-dashboard">
       <div className="dashboard-header">
-        <h2>📊 Dashboard de Analytics</h2>
+        <h2 className="dashboard-title-with-icon">
+          <IconByName name="barChart3" size={28} strokeWidth={1.75} />
+          Dashboard de Analytics
+        </h2>
         <p>Monitore seu progresso e performance no curso</p>
         
         <div className="period-selector">
@@ -184,7 +189,9 @@ const AnalyticsDashboard = ({ user }) => {
 
       <div className="stats-overview">
         <div className="stat-card">
-          <div className="stat-icon">🔥</div>
+          <div className="stat-icon">
+            <IconByName name="flame" size={26} strokeWidth={1.75} />
+          </div>
           <div className="stat-content">
             <div className="stat-number">{analyticsData.streakDays}</div>
             <div className="stat-label">Dias Consecutivos</div>
@@ -192,7 +199,9 @@ const AnalyticsDashboard = ({ user }) => {
         </div>
         
         <div className="stat-card">
-          <div className="stat-icon">⏱️</div>
+          <div className="stat-icon">
+            <IconByName name="timer" size={26} strokeWidth={1.75} />
+          </div>
           <div className="stat-content">
             <div className="stat-number">{formatTime(analyticsData.totalTime)}</div>
             <div className="stat-label">Tempo Total</div>
@@ -200,7 +209,9 @@ const AnalyticsDashboard = ({ user }) => {
         </div>
         
         <div className="stat-card">
-          <div className="stat-icon">📈</div>
+          <div className="stat-icon">
+            <IconByName name="trendingUp" size={26} strokeWidth={1.75} />
+          </div>
           <div className="stat-content">
             <div className="stat-number">{analyticsData.averageScore}%</div>
             <div className="stat-label">Média Geral</div>
@@ -208,7 +219,9 @@ const AnalyticsDashboard = ({ user }) => {
         </div>
         
         <div className="stat-card">
-          <div className="stat-icon">🎓</div>
+          <div className="stat-icon">
+            <IconByName name="graduationCap" size={26} strokeWidth={1.75} />
+          </div>
           <div className="stat-content">
             <div className="stat-number">{analyticsData.completedModules}/6</div>
             <div className="stat-label">Módulos Concluídos</div>
@@ -218,7 +231,10 @@ const AnalyticsDashboard = ({ user }) => {
 
       <div className="charts-section">
         <div className="chart-container">
-          <h3>📚 Tempo de Estudo Diário</h3>
+          <h3 className="chart-container-title">
+            <IconByName name="library" size={22} strokeWidth={1.75} />
+            Tempo de estudo diário
+          </h3>
           <div className="study-time-chart">
             {analyticsData.studyTime.map((day, index) => (
               <div key={index} className="chart-bar">
@@ -237,7 +253,10 @@ const AnalyticsDashboard = ({ user }) => {
         </div>
 
         <div className="chart-container">
-          <h3>🎯 Performance nos Quizzes</h3>
+          <h3 className="chart-container-title">
+            <IconByName name="target" size={22} strokeWidth={1.75} />
+            Performance nos quizzes
+          </h3>
           <div className="quiz-scores-chart">
             {analyticsData.quizScores.length > 0 ? (
               analyticsData.quizScores.map((score, index) => (
@@ -253,7 +272,10 @@ const AnalyticsDashboard = ({ user }) => {
       </div>
 
       <div className="module-progress-section">
-        <h3>📖 Progresso por Módulo</h3>
+        <h3 className="chart-container-title">
+          <IconByName name="bookOpen" size={22} strokeWidth={1.75} />
+          Progresso por módulo
+        </h3>
         <div className="module-progress-grid">
           {analyticsData.moduleProgress.map((module, index) => (
             <div key={index} className="module-progress-card">
@@ -273,8 +295,14 @@ const AnalyticsDashboard = ({ user }) => {
               </div>
               
               <div className="module-stats">
-                <span>📝 {module.lessons} lições</span>
-                <span>✅ {module.quizzes} quizzes</span>
+                <span className="module-stat-line">
+                  <FileText size={16} aria-hidden />
+                  {module.lessons} lições
+                </span>
+                <span className="module-stat-line">
+                  <Check size={16} aria-hidden />
+                  {module.quizzes} quizzes
+                </span>
               </div>
             </div>
           ))}
@@ -282,10 +310,15 @@ const AnalyticsDashboard = ({ user }) => {
       </div>
 
       <div className="achievements-section">
-        <h3>🏆 Conquistas</h3>
+        <h3 className="chart-container-title">
+          <IconByName name="trophy" size={22} strokeWidth={1.75} />
+          Conquistas
+        </h3>
         <div className="achievements-grid">
           <div className={`achievement ${analyticsData.streakDays >= 7 ? 'unlocked' : 'locked'}`}>
-            <div className="achievement-icon">🔥</div>
+            <div className="achievement-icon">
+              <IconByName name="flame" size={24} strokeWidth={1.75} />
+            </div>
             <div className="achievement-info">
               <h4>Estudioso Dedicado</h4>
               <p>7 dias consecutivos de estudo</p>
@@ -293,7 +326,9 @@ const AnalyticsDashboard = ({ user }) => {
           </div>
           
           <div className={`achievement ${analyticsData.averageScore >= 90 ? 'unlocked' : 'locked'}`}>
-            <div className="achievement-icon">⭐</div>
+            <div className="achievement-icon">
+              <IconByName name="star" size={24} strokeWidth={1.75} />
+            </div>
             <div className="achievement-info">
               <h4>Excelência Acadêmica</h4>
               <p>Média geral acima de 90%</p>
@@ -301,7 +336,9 @@ const AnalyticsDashboard = ({ user }) => {
           </div>
           
           <div className={`achievement ${analyticsData.completedModules >= 3 ? 'unlocked' : 'locked'}`}>
-            <div className="achievement-icon">📚</div>
+            <div className="achievement-icon">
+              <IconByName name="library" size={24} strokeWidth={1.75} />
+            </div>
             <div className="achievement-info">
               <h4>Metade do Caminho</h4>
               <p>Concluir 3 módulos</p>
@@ -309,7 +346,9 @@ const AnalyticsDashboard = ({ user }) => {
           </div>
           
           <div className={`achievement ${analyticsData.certificates > 0 ? 'unlocked' : 'locked'}`}>
-            <div className="achievement-icon">🎓</div>
+            <div className="achievement-icon">
+              <IconByName name="graduationCap" size={24} strokeWidth={1.75} />
+            </div>
             <div className="achievement-info">
               <h4>Piloto Certificado</h4>
               <p>Concluir todo o curso</p>

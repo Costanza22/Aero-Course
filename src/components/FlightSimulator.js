@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './FlightSimulator.css';
+import { Plane, Pause, Play, RefreshCw, Gamepad2, ClipboardList } from 'lucide-react';
 
 const FlightSimulator = () => {
   const canvasRef = useRef(null);
@@ -219,7 +220,10 @@ const FlightSimulator = () => {
   return (
     <div className="flight-simulator">
       <div className="simulator-header">
-        <h2>🛩️ Simulador de Voo Básico</h2>
+        <h2 className="simulator-header-title">
+          <Plane size={28} strokeWidth={1.75} aria-hidden />
+          Simulador de voo básico
+        </h2>
         <p>Experimente os controles básicos de uma aeronave</p>
       </div>
 
@@ -234,22 +238,34 @@ const FlightSimulator = () => {
           
           <div className="simulator-controls">
             <button 
+              type="button"
               className={`simulator-btn ${isRunning ? 'stop' : 'start'}`}
               onClick={() => setIsRunning(!isRunning)}
             >
-              {isRunning ? '⏸️ Pausar' : '▶️ Iniciar'}
+              {isRunning ? (
+                <>
+                  <Pause size={18} aria-hidden /> Pausar
+                </>
+              ) : (
+                <>
+                  <Play size={18} aria-hidden /> Iniciar
+                </>
+              )}
             </button>
             <button 
+              type="button"
               className="simulator-btn reset"
               onClick={resetSimulator}
             >
-              🔄 Reset
+              <RefreshCw size={18} aria-hidden /> Reset
             </button>
           </div>
         </div>
 
         <div className="control-panel">
-          <h3>🎮 Controles de Voo</h3>
+          <h3 className="control-panel-title">
+            <Gamepad2 size={22} aria-hidden /> Controles de voo
+          </h3>
           
           <div className="control-group">
             <label>Throttle (Potência)</label>
@@ -308,7 +324,9 @@ const FlightSimulator = () => {
           </div>
 
           <div className="control-instructions">
-            <h4>📋 Instruções</h4>
+            <h4 className="control-instructions-title">
+              <ClipboardList size={18} aria-hidden /> Instruções
+            </h4>
             <ul>
               <li><strong>Throttle:</strong> Controla a potência do motor</li>
               <li><strong>Elevator:</strong> Controla o pitch (subida/descida)</li>

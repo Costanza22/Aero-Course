@@ -9,11 +9,20 @@
   margin-bottom: 2rem;
 }
 
-.simulator-header h2 {
+.simulator-header h2,
+.simulator-header-title {
   color: #2a5298;
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   font-weight: 700;
+}
+
+.simulator-header-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .simulator-header p {
@@ -51,6 +60,10 @@
 }
 
 .simulator-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   background: linear-gradient(45deg, #ffd700, #2a5298);
   color: #fff;
   border: none;
@@ -92,12 +105,22 @@
   height: fit-content;
 }
 
-.control-panel h3 {
+.control-panel h3,
+.control-panel-title {
   color: #2a5298;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
+}
+
+.control-panel-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .control-group {
@@ -162,11 +185,18 @@
   border-top: 2px solid #e3f2fd;
 }
 
-.control-instructions h4 {
+.control-instructions h4,
+.control-instructions-title {
   color: #2a5298;
   margin-bottom: 1rem;
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.control-instructions-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .control-instructions ul {
@@ -184,7 +214,7 @@
 }
 
 .control-instructions li:before {
-  content: '✈️';
+  content: '';
   position: absolute;
   left: 0;
   top: 0;

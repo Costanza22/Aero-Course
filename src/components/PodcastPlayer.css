@@ -7,10 +7,19 @@
   margin-bottom: 2rem;
 }
 
-.podcast-header h2 {
+.podcast-header h2,
+.podcast-header-title {
   font-size: 2rem;
   color: #2a5298;
   margin-bottom: 0.5rem;
+}
+
+.podcast-header-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .podcast-header p {
@@ -52,7 +61,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  color: white;
+}
+
+.cover-placeholder svg {
   color: white;
 }
 
@@ -80,10 +92,17 @@
 
 .episode-meta {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 1rem;
   font-size: 0.9rem;
   color: #888;
+}
+
+.episode-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .episode-topics {
@@ -117,6 +136,10 @@
 }
 
 .control-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   background: #e9ecef;
   border: none;
   padding: 0.8rem 1.2rem;
@@ -134,6 +157,9 @@
 }
 
 .play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(45deg, #ffd700, #2a5298);
   color: white;
   border: none;
@@ -251,6 +277,10 @@
 }
 
 .transcript-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   background: linear-gradient(45deg, #ffd700, #2a5298);
   color: white;
   border: none;
@@ -343,7 +373,15 @@
 }
 
 .episode-icon {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #2a5298;
+}
+
+.episode-card.active .episode-icon {
+  color: #fff;
 }
 
 .episode-details {
@@ -369,6 +407,9 @@
 }
 
 .episode-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -388,10 +429,19 @@
   text-align: center;
 }
 
-.feature-card h4 {
+.feature-card h4,
+.podcast-feature-title {
   color: #2a5298;
   margin: 0 0 1rem 0;
   font-size: 1.1rem;
+}
+
+.podcast-feature-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
 }
 
 .feature-card p {

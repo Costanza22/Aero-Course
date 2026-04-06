@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { MessageCircle } from 'lucide-react';
 import './Chat.css';
 
 // Respostas automáticas do instrutor
 const autoResponses = {
-  'oi': 'Olá! Como posso ajudar você hoje? 😊',
-  'olá': 'Oi! Tudo bem? Precisa de ajuda com algum módulo do curso?',
-  'oi!': 'Oi! Bem-vindo(a) ao chat do AeroCourse! ✈️',
-  'ajuda': 'Claro! Posso ajudar com dúvidas sobre aeronáutica, navegação, sistemas de aeronaves e muito mais. Qual módulo você está estudando?',
-  'duvida': 'Fique à vontade para perguntar! Estou aqui para ajudar com suas dúvidas sobre aeronáutica.',
-  'obrigado': 'Por nada! Fico feliz em ajudar! 😊',
-  'obrigada': 'Por nada! Fico feliz em ajudar! 😊',
-  'valeu': 'Disponha! Se precisar de mais alguma coisa, é só perguntar!',
-  'tchau': 'Até logo! Continue estudando! 🛩️',
-  'bye': 'Até a próxima! Boa sorte nos estudos! ✈️'
+  oi: 'Olá! Como posso ajudar você hoje?',
+  olá: 'Oi! Tudo bem? Precisa de ajuda com algum módulo do curso?',
+  'oi!': 'Oi! Bem-vindo(a) ao chat do AeroCourse.',
+  ajuda: 'Claro! Posso ajudar com dúvidas sobre aeronáutica, navegação, sistemas de aeronaves e muito mais. Qual módulo você está estudando?',
+  duvida: 'Fique à vontade para perguntar! Estou aqui para ajudar com suas dúvidas sobre aeronáutica.',
+  obrigado: 'Por nada! Fico feliz em ajudar!',
+  obrigada: 'Por nada! Fico feliz em ajudar!',
+  valeu: 'Disponha! Se precisar de mais alguma coisa, é só perguntar!',
+  tchau: 'Até logo! Continue estudando!',
+  bye: 'Até a próxima! Boa sorte nos estudos!',
 };
 
 const Chat = ({ user }) => {
@@ -34,31 +35,31 @@ const Chat = ({ user }) => {
     
     // Verificar palavras-chave
     if (lowerMessage.includes('aeronáutica') || lowerMessage.includes('aeronautica')) {
-      return 'Aeronáutica é fascinante! Qual aspecto específico te interessa mais? 🛩️';
+      return 'Aeronáutica é fascinante! Qual aspecto específico te interessa mais?';
     }
     
     if (lowerMessage.includes('navegação') || lowerMessage.includes('navegacao')) {
-      return 'Navegação aérea é um tema muito importante! Já estudou o módulo de Navegação Aérea? 🧭';
+      return 'Navegação aérea é um tema muito importante! Já estudou o módulo de Navegação Aérea?';
     }
     
     if (lowerMessage.includes('sistema') || lowerMessage.includes('sistemas')) {
-      return 'Os sistemas de aeronaves são fundamentais! Recomendo estudar o módulo "Sistemas de Aeronaves" para entender melhor. ⚙️';
+      return 'Os sistemas de aeronaves são fundamentais! Recomendo estudar o módulo "Sistemas de Aeronaves" para entender melhor.';
     }
     
     if (lowerMessage.includes('voo') || lowerMessage.includes('voar')) {
-      return 'Os princípios de voo são incríveis! Comece pelo módulo "Fundamentos da Aeronáutica" para entender os conceitos básicos. ✈️';
+      return 'Os princípios de voo são incríveis! Comece pelo módulo "Fundamentos da Aeronáutica" para entender os conceitos básicos.';
     }
     
     if (lowerMessage.includes('módulo') || lowerMessage.includes('modulo')) {
-      return 'Temos 6 módulos no curso! Qual você gostaria de conhecer melhor? Posso te dar uma visão geral de qualquer um deles. 📚';
+      return 'Temos 6 módulos no curso! Qual você gostaria de conhecer melhor? Posso te dar uma visão geral de qualquer um deles.';
     }
     
     if (lowerMessage.includes('certificado')) {
-      return 'Para obter o certificado, você precisa completar todos os 6 módulos do curso. Continue estudando! 🎓';
+      return 'Para obter o certificado, você precisa completar todos os 6 módulos do curso. Continue estudando!';
     }
     
     // Resposta padrão para mensagens não reconhecidas
-    return 'Interessante! Se tiver dúvidas específicas sobre aeronáutica, navegação, sistemas de aeronaves ou qualquer outro tema do curso, é só perguntar! 😊';
+    return 'Interessante! Se tiver dúvidas específicas sobre aeronáutica, navegação, sistemas de aeronaves ou qualquer outro tema do curso, é só perguntar.';
   };
 
   const sendMessage = (e) => {
@@ -95,11 +96,14 @@ const Chat = ({ user }) => {
 
   return (
     <div className="chat-container">
-      <div className="chat-header">💬 Chat com Instrutora</div>
+      <div className="chat-header">
+        <MessageCircle size={20} strokeWidth={2} aria-hidden />
+        Chat com instrutora
+      </div>
       <div className="chat-messages">
         {messages.length === 0 && (
           <div className="chat-welcome">
-            <p>👋 Olá! Sou a Costanza, sua instrutora.</p>
+            <p>Olá! Sou a Costanza, sua instrutora.</p>
             <p>Como posso ajudar você hoje?</p>
           </div>
         )}

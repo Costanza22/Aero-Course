@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './VirtualTour.css';
+import {
+  Video,
+  MapPin,
+  Clock,
+  ChevronLeft,
+  ChevronRight,
+  RefreshCw,
+  Target,
+  Smartphone,
+  Glasses,
+} from 'lucide-react';
 
 const VirtualTour = () => {
   const [currentTour, setCurrentTour] = useState(0);
@@ -82,7 +93,10 @@ const VirtualTour = () => {
   return (
     <div className="virtual-tour">
       <div className="tour-header">
-        <h2>🎥 Tours Virtuais 360°</h2>
+        <h2 className="tour-header-title">
+          <Video size={28} strokeWidth={1.75} aria-hidden />
+          Tours virtuais 360°
+        </h2>
         <p>Explore locais aeronáuticos em realidade virtual</p>
       </div>
 
@@ -109,7 +123,9 @@ const VirtualTour = () => {
                     style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
                     title={hotspot.label}
                   >
-                    <div className="hotspot-marker">📍</div>
+                    <div className="hotspot-marker">
+                      <MapPin size={18} aria-hidden />
+                    </div>
                     <div className="hotspot-tooltip">
                       <h4>{hotspot.label}</h4>
                       <p>{hotspot.description}</p>
@@ -124,15 +140,19 @@ const VirtualTour = () => {
             <h3>{tours[currentTour].title}</h3>
             <p>{tours[currentTour].description}</p>
             <div className="tour-meta">
-              <span>⏱️ Duração: {tours[currentTour].duration}</span>
-              <span>📍 Hotspots: {tours[currentTour].hotspots.length}</span>
+              <span className="tour-meta-line">
+                <Clock size={16} aria-hidden /> Duração: {tours[currentTour].duration}
+              </span>
+              <span className="tour-meta-line">
+                <MapPin size={16} aria-hidden /> Hotspots: {tours[currentTour].hotspots.length}
+              </span>
             </div>
           </div>
         </div>
 
         <div className="tour-navigation">
-          <button className="nav-btn" onClick={prevTour}>
-            ⬅️ Anterior
+          <button type="button" className="nav-btn" onClick={prevTour}>
+            <ChevronLeft size={20} aria-hidden /> Anterior
           </button>
           
           <div className="tour-thumbnails">
@@ -148,31 +168,39 @@ const VirtualTour = () => {
             ))}
           </div>
           
-          <button className="nav-btn" onClick={nextTour}>
-            Próximo ➡️
+          <button type="button" className="nav-btn" onClick={nextTour}>
+            Próximo <ChevronRight size={20} aria-hidden />
           </button>
         </div>
       </div>
 
       <div className="tour-features">
         <div className="feature-card">
-          <h4>🎯 Hotspots Interativos</h4>
+          <h4 className="tour-feature-title">
+            <Target size={18} aria-hidden /> Hotspots interativos
+          </h4>
           <p>Clique nos marcadores para obter informações detalhadas sobre cada componente</p>
         </div>
         
         <div className="feature-card">
-          <h4>🔄 Controles 360°</h4>
+          <h4 className="tour-feature-title">
+            <RefreshCw size={18} aria-hidden /> Controles 360°
+          </h4>
           <p>{isMobile ? 'Toque e arraste para explorar o ambiente em todas as direções' : 'Arraste o mouse para explorar o ambiente em todas as direções'}</p>
         </div>
         
         <div className="feature-card">
-          <h4>📱 Compatível com VR</h4>
+          <h4 className="tour-feature-title">
+            <Glasses size={18} aria-hidden /> Compatível com VR
+          </h4>
           <p>Use óculos de realidade virtual para uma experiência imersiva completa</p>
         </div>
         
         {isMobile && (
           <div className="feature-card">
-            <h4>📱 Otimizado para Mobile</h4>
+            <h4 className="tour-feature-title">
+              <Smartphone size={18} aria-hidden /> Otimizado para mobile
+            </h4>
             <p>Interface adaptada para touch, controles intuitivos e carregamento otimizado</p>
           </div>
         )}

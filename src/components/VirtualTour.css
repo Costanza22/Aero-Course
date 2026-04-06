@@ -7,10 +7,19 @@
   margin-bottom: 2rem;
 }
 
-.tour-header h2 {
+.tour-header h2,
+.tour-header-title {
   font-size: 2rem;
   color: #2a5298;
   margin-bottom: 0.5rem;
+}
+
+.tour-header-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .tour-header p {
@@ -80,7 +89,10 @@
 }
 
 .hotspot-marker {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f43f5e;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   animation: pulse 2s infinite;
 }
@@ -203,9 +215,16 @@
 
 .tour-meta {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   font-size: 0.9rem;
   color: #888;
+}
+
+.tour-meta-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .tour-navigation {
@@ -215,6 +234,10 @@
 }
 
 .nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   background: linear-gradient(45deg, #ffd700, #2a5298);
   color: white;
   border: none;
@@ -288,10 +311,19 @@
   text-align: center;
 }
 
-.feature-card h4 {
+.feature-card h4,
+.tour-feature-title {
   color: #2a5298;
   margin: 0 0 1rem 0;
   font-size: 1.1rem;
+}
+
+.tour-feature-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
 }
 
 .feature-card p {

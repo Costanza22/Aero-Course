@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { BarChart3, Target, BookOpen, FileText, ListChecks } from 'lucide-react';
+import { ModuleIcon } from './ui/ModuleIcon';
 import './GradeSystem.css';
 
 const GRADE_KEY = 'aerocourse_grades';
@@ -15,12 +17,12 @@ const GradeSystem = ({ user }) => {
   }, [grades]);
 
   const modules = [
-    { id: 1, title: 'Fundamentos da Aeronáutica', icon: '🛩️' },
-    { id: 2, title: 'Sistemas de Aeronaves', icon: '⚙️' },
-    { id: 3, title: 'Navegação Aérea', icon: '🧭' },
-    { id: 4, title: 'Meteorologia Aeronáutica', icon: '🌤️' },
-    { id: 5, title: 'Regulamentação Aeronáutica', icon: '📋' },
-    { id: 6, title: 'Manutenção de Aeronaves', icon: '🔧' }
+    { id: 1, title: 'Fundamentos da Aeronáutica' },
+    { id: 2, title: 'Sistemas de Aeronaves' },
+    { id: 3, title: 'Navegação Aérea' },
+    { id: 4, title: 'Meteorologia Aeronáutica' },
+    { id: 5, title: 'Regulamentação Aeronáutica' },
+    { id: 6, title: 'Manutenção de Aeronaves' },
   ];
 
   const lessons = {
@@ -84,13 +86,19 @@ const GradeSystem = ({ user }) => {
   return (
     <div className="grade-system">
       <div className="grade-header">
-        <h2>📊 Sistema de Avaliação</h2>
+        <h2 className="grade-heading-with-icon">
+          <BarChart3 size={26} strokeWidth={2} aria-hidden />
+          Sistema de avaliação
+        </h2>
         <p>Rastreie seu progresso e desempenho em cada módulo</p>
       </div>
 
       {overallGrade && (
         <div className="overall-grade">
-          <h3>🎯 Nota Geral do Curso</h3>
+          <h3 className="grade-subheading-with-icon">
+            <Target size={22} strokeWidth={2} aria-hidden />
+            Nota geral do curso
+          </h3>
           <div className="grade-summary">
             <div className="grade-circle" style={{ borderColor: getGradeColor(overallGrade.average) }}>
               <div className="grade-percentage" style={{ color: getGradeColor(overallGrade.average) }}>
@@ -115,7 +123,10 @@ const GradeSystem = ({ user }) => {
       )}
 
       <div className="modules-grades">
-        <h3>📚 Notas por Módulo</h3>
+        <h3 className="grade-subheading-with-icon">
+          <BookOpen size={22} strokeWidth={2} aria-hidden />
+          Notas por módulo
+        </h3>
         <div className="modules-grid">
           {modules.map(module => {
             const moduleGrade = getModuleGrade(module.id);
@@ -128,7 +139,9 @@ const GradeSystem = ({ user }) => {
                 onClick={() => setSelectedModule(isSelected ? null : module.id)}
               >
                 <div className="module-grade-header">
-                  <span className="module-icon">{module.icon}</span>
+                  <span className="module-icon">
+                    <ModuleIcon id={module.id} size={24} />
+                  </span>
                   <h4>{module.title}</h4>
                 </div>
                 
@@ -157,7 +170,10 @@ const GradeSystem = ({ user }) => {
 
       {selectedModule && (
         <div className="lesson-grades">
-          <h3>📝 Notas por Lição - {modules.find(m => m.id === selectedModule)?.title}</h3>
+          <h3 className="grade-subheading-with-icon">
+            <FileText size={20} strokeWidth={2} aria-hidden />
+            Notas por lição — {modules.find((m) => m.id === selectedModule)?.title}
+          </h3>
           <div className="lessons-list">
             {lessons[selectedModule].map((lesson, index) => {
               const lessonGrade = grades[selectedModule]?.[index];
@@ -188,7 +204,10 @@ const GradeSystem = ({ user }) => {
       )}
 
       <div className="grade-legend">
-        <h4>📋 Legenda das Notas</h4>
+        <h4 className="grade-subheading-with-icon grade-legend-title">
+          <ListChecks size={18} strokeWidth={2} aria-hidden />
+          Legenda das notas
+        </h4>
         <div className="legend-items">
           <div className="legend-item">
             <span className="legend-color" style={{ backgroundColor: '#28a745' }}></span>

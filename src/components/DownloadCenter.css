@@ -9,10 +9,24 @@
   margin-bottom: 3rem;
 }
 
-.download-header h2 {
+.download-header h2,
+.download-header-title {
   font-size: 2.5rem;
   color: #2a5298;
   margin-bottom: 1rem;
+}
+
+.download-header-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.download-header-title svg {
+  flex-shrink: 0;
+  color: #2a5298;
 }
 
 .download-header p {
@@ -86,7 +100,13 @@
 }
 
 .category-icon {
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-icon svg {
+  color: inherit;
 }
 
 .category-count {
@@ -121,11 +141,14 @@
 }
 
 .stat-icon {
-  font-size: 2rem;
-  background: linear-gradient(45deg, #ffd700, #2a5298);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a5298;
+}
+
+.stat-icon svg {
+  color: #2a5298;
 }
 
 .stat-number {
@@ -169,12 +192,15 @@
 }
 
 .file-icon {
-  font-size: 2.5rem;
-  background: linear-gradient(45deg, #ffd700, #2a5298);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  color: #2a5298;
+}
+
+.file-icon svg {
+  color: #2a5298;
 }
 
 .file-info {
@@ -234,6 +260,10 @@
 .download-btn,
 .preview-btn {
   flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   padding: 0.8rem 1rem;
   border: none;
   border-radius: 10px;
@@ -273,8 +303,10 @@
 }
 
 .no-files-icon {
-  font-size: 4rem;
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
+  color: #2a5298;
 }
 
 .no-files h3 {
@@ -289,10 +321,17 @@
   border: 2px solid #e9ecef;
 }
 
-.download-info h4 {
+.download-info h4,
+.download-info-heading {
   color: #2a5298;
   margin-bottom: 1rem;
   font-size: 1.2rem;
+}
+
+.download-info-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .download-info ul {
@@ -302,9 +341,18 @@
 }
 
 .download-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
   padding: 0.5rem 0;
   color: #333;
   font-size: 1rem;
+}
+
+.download-info-check {
+  flex-shrink: 0;
+  margin-top: 0.2em;
+  color: #0d9488;
 }
 
 /* Modo escuro */

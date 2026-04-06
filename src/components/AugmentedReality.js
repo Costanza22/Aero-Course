@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './AugmentedReality.css';
+import { Glasses, Target, RotateCw, RotateCcw, RefreshCw, Wrench, Smartphone, Ruler } from 'lucide-react';
 
 const AugmentedReality = () => {
   const [selectedComponent, setSelectedComponent] = useState(0);
@@ -196,7 +197,10 @@ const AugmentedReality = () => {
   return (
     <div className="augmented-reality">
       <div className="ar-header">
-        <h2>🥽 Realidade Aumentada</h2>
+        <h2 className="ar-title-with-icon">
+          <Glasses size={28} strokeWidth={1.75} aria-hidden />
+          Realidade aumentada
+        </h2>
         <p>Visualize componentes de aeronaves em 3D</p>
       </div>
 
@@ -213,10 +217,14 @@ const AugmentedReality = () => {
             {!isARActive && (
               <div className="ar-overlay">
                 <div className="ar-placeholder">
-                  <h3>🎯 Visualização 3D</h3>
-                  <p>Clique em "Ativar AR" para visualizar o componente em 3D</p>
-                  <button className="ar-activate-btn" onClick={toggleAR}>
-                    🥽 Ativar Realidade Aumentada
+                  <h3 className="ar-placeholder-title">
+                    <Target size={22} aria-hidden />
+                    Visualização 3D
+                  </h3>
+                  <p>Clique em «Ativar AR» para visualizar o componente em 3D</p>
+                  <button type="button" className="ar-activate-btn" onClick={toggleAR}>
+                    <Glasses size={20} aria-hidden />
+                    Ativar realidade aumentada
                   </button>
                 </div>
               </div>
@@ -230,18 +238,32 @@ const AugmentedReality = () => {
                   <span>Z: {Math.round(rotation.z)}°</span>
                 </div>
                 <div className="control-group">
-                  <button onClick={() => rotateComponent('x', 1)}>↻ X+</button>
-                  <button onClick={() => rotateComponent('x', -1)}>↺ X-</button>
+                  <button type="button" onClick={() => rotateComponent('x', 1)}>
+                    <RotateCw size={16} aria-hidden /> X+
+                  </button>
+                  <button type="button" onClick={() => rotateComponent('x', -1)}>
+                    <RotateCcw size={16} aria-hidden /> X−
+                  </button>
                 </div>
                 <div className="control-group">
-                  <button onClick={() => rotateComponent('y', 1)}>↻ Y+</button>
-                  <button onClick={() => rotateComponent('y', -1)}>↺ Y-</button>
+                  <button type="button" onClick={() => rotateComponent('y', 1)}>
+                    <RotateCw size={16} aria-hidden /> Y+
+                  </button>
+                  <button type="button" onClick={() => rotateComponent('y', -1)}>
+                    <RotateCcw size={16} aria-hidden /> Y−
+                  </button>
                 </div>
                 <div className="control-group">
-                  <button onClick={() => rotateComponent('z', 1)}>↻ Z+</button>
-                  <button onClick={() => rotateComponent('z', -1)}>↺ Z-</button>
+                  <button type="button" onClick={() => rotateComponent('z', 1)}>
+                    <RotateCw size={16} aria-hidden /> Z+
+                  </button>
+                  <button type="button" onClick={() => rotateComponent('z', -1)}>
+                    <RotateCcw size={16} aria-hidden /> Z−
+                  </button>
                 </div>
-                <button className="reset-btn" onClick={resetView}>🔄 Reset</button>
+                <button type="button" className="reset-btn" onClick={resetView}>
+                  <RefreshCw size={16} aria-hidden /> Reset
+                </button>
               </div>
             )}
           </div>
@@ -257,7 +279,9 @@ const AugmentedReality = () => {
                   className={`component-item ${index === selectedComponent ? 'active' : ''}`}
                   onClick={() => setSelectedComponent(index)}
                 >
-                  <div className="component-icon">🔧</div>
+                  <div className="component-icon">
+                    <Wrench size={22} strokeWidth={1.75} aria-hidden />
+                  </div>
                   <div className="component-info">
                     <h4>{component.name}</h4>
                     <span className="component-category">{component.category}</span>
@@ -301,17 +325,23 @@ const AugmentedReality = () => {
 
       <div className="ar-features">
         <div className="feature-card">
-          <h4>📱 Compatível com Mobile</h4>
+          <h4 className="ar-feature-title">
+            <Smartphone size={18} aria-hidden /> Compatível com mobile
+          </h4>
           <p>Use a câmera do seu dispositivo para visualização AR completa</p>
         </div>
         
         <div className="feature-card">
-          <h4>🎯 Interação Gestual</h4>
+          <h4 className="ar-feature-title">
+            <Target size={18} aria-hidden /> Interação gestual
+          </h4>
           <p>Toque e arraste para rotacionar e examinar os componentes</p>
         </div>
         
         <div className="feature-card">
-          <h4>📏 Medições Precisas</h4>
+          <h4 className="ar-feature-title">
+            <Ruler size={18} aria-hidden /> Medições precisas
+          </h4>
           <p>Obtenha medidas reais dos componentes em escala</p>
         </div>
       </div>

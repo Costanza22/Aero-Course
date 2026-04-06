@@ -19,8 +19,14 @@
 }
 
 .certificate-logo {
-  font-size: 4rem;
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
+  color: #2a5298;
+}
+
+.certificate-logo svg {
+  display: block;
 }
 
 .certificate-header h2 {
@@ -119,6 +125,10 @@
 
 .download-pdf-btn,
 .download-text-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   background: linear-gradient(45deg, #ffd700, #2a5298);
   color: #fff;
   border: none;
@@ -129,6 +139,16 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(42, 82, 152, 0.2);
+}
+
+.cert-btn-spin {
+  animation: cert-spin 0.9s linear infinite;
+}
+
+@keyframes cert-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .download-pdf-btn:hover,
@@ -159,7 +179,11 @@
   border: 2px solid #e9ecef;
 }
 
-.certificate-info h4 {
+.certificate-info h4,
+.certificate-info-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   color: #2a5298;
   margin-bottom: 1rem;
   font-size: 1.2rem;
@@ -172,9 +196,18 @@
 }
 
 .certificate-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
   padding: 0.5rem 0;
   color: #333;
   font-size: 1rem;
+}
+
+.certificate-info li svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  color: #0d9488;
 }
 
 /* Modo escuro */

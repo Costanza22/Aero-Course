@@ -13,12 +13,19 @@
   border: 2px solid #ffd700;
 }
 .chat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   background: linear-gradient(90deg, #2a5298 0%, #ffd700 100%);
   color: #fff;
   font-weight: 700;
   padding: 0.8rem 1.2rem;
   border-radius: 16px 16px 0 0;
   font-size: 1.1rem;
+}
+
+.chat-header svg {
+  flex-shrink: 0;
 }
 .chat-messages {
   flex: 1;
